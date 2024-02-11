@@ -1,0 +1,15 @@
+.prompterInput {
+    width: 800px;
+    border: 1px black solid;
+    display: flex;
+    height: 20px;
+
+}
+
+
+.prompterContainer {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
