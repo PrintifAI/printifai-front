@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 20px;
+    width: 244px;
+    height: 260px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.container:hover>div {
+    visibility: visible;
+}
+
+.onHoverBlock {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: rgba(53,53,53,0.54);
+}
+
+.price {
+    color: var(--bg-color);
+    font-family: var(--font-montserrat);
+    font-size: 17px;
+    text-wrap: nowrap;
+    margin-right: 10px;
+}

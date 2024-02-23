@@ -1,35 +1,43 @@
-import { StarOutlined } from '@ant-design/icons';
+import Image from 'next/image';
+
 import styles from './Header.module.css';
 import Link from 'next/link';
 
+import logoIcon from '../../../public/icons/logo.svg';
+import { Button, ButtonTheme } from '../Button/Button';
+import { ShoppingCartOutlined } from '@ant-design/icons';
+
 export const Header = () => {
     return (
-        <header>
+        <header className={styles.header}>
             <nav className={styles.nav}>
-                <div className={styles.innerNav}>
-                    <Link href="/">
-                        <StarOutlined />
-                        PrintifAI
+                <Link href="/" className={styles.logoLink}>
+                    <Image src={logoIcon} alt="logo" />
+                    PrintifAI
+                </Link>
+                <div className={styles.menuLinks}>
+                    <Link href="/catalog" className={styles.menuLink}>
+                        Каталог
                     </Link>
-                    <div>
-                        <Link href="/catalog" className={styles.link}>
-                            Каталог
-                        </Link>
-                        <Link href="/how-it-works" className={styles.link}>
-                            Как это работает?
-                        </Link>
-                        <Link href="/delivery" className={styles.link}>
-                            Доставка
-                        </Link>
-                        <Link href="/faq" className={styles.link}>
-                            FAQ
-                        </Link>
-                        <Link href="/contacts" className={styles.link}>
-                            Контакты
-                        </Link>
-                    </div>
-                    <div className={styles.cartButton}>Корзина</div>
+                    <Link href="/how-it-works" className={styles.menuLink}>
+                        Как это работает?
+                    </Link>
+                    <Link href="/delivery" className={styles.menuLink}>
+                        Доставка
+                    </Link>
+                    <Link href="/faq" className={styles.menuLink}>
+                        FAQ
+                    </Link>
+                    <Link href="/contacts" className={styles.menuLink}>
+                        Контакты
+                    </Link>
                 </div>
+                <Button
+                    left={<ShoppingCartOutlined style={{ fontSize: '24px' }} />}
+                    theme={ButtonTheme.WhiteBackground}
+                >
+                    Корзина
+                </Button>
             </nav>
         </header>
     );

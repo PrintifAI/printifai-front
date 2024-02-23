@@ -1,12 +1,13 @@
-import type { Metadata } from 'next';
-import { Roboto_Flex } from 'next/font/google';
 import './globals.css';
+import './variables.css';
+import type { Metadata } from 'next';
 import { Header } from './components/Header/Header';
 
-import styles from './page.module.css';
 import { Footer } from './components/Footer/Footer';
 
-const inter = Roboto_Flex({ subsets: ['latin'] });
+import styles from './layout.module.css';
+import { montserrat, ramabhadra, robotoFlex } from './fonts';
+import classNames from 'classnames';
 
 export const metadata: Metadata = {
     title: 'PrintifAI',
@@ -20,9 +21,18 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru">
-            <body className={inter.className}>
+            <body
+                className={classNames(
+                    styles.body,
+                    robotoFlex.variable,
+                    montserrat.variable,
+                    ramabhadra.variable,
+                )}
+            >
                 <Header />
-                <div className={styles.content}>{children}</div>
+                <div className={styles.wrapper}>
+                    <div className={styles.content}>{children}</div>
+                </div>
                 <Footer />
             </body>
         </html>

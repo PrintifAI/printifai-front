@@ -1,0 +1,26 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bg-color);
+    width: 100%;
+    height: 56px;
+}
+
+.footerContent {
+    max-width: 1104px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-montserrat);
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+}
