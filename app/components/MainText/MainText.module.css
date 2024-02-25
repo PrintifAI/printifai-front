@@ -28,9 +28,12 @@
 
 .underline1:after {
     display: block;
-    content: url("/figures/underline1.svg");
+    background: url("/figures/underline1.svg") no-repeat;
+    width: 5em;
+    height: 1em;
     position: absolute;
-    top: 0.6em;
+    top: 1.3em;
+    content: "";
 }
 
 .underline2 {
@@ -40,7 +43,11 @@
 
 .underline2:after {
     display: block;
-    content: url("/figures/underline2.svg");
+    background: url("/figures/underline2.svg") no-repeat;
+    width: 7.5em;
+    height: 1em;
     position: absolute;
-    top: 0.9em;
+    top: 1.3em;
+    content: "";
+    left: -0.2em;
 }
