@@ -16,17 +16,22 @@ export const ItemWithImage = ({ imageSrc, itemSrc }: Props) => {
                 animate={{ opacity: 1, x: 0 }}
                 initial={{ opacity: 0, x: 10 }}
                 exit={{ opacity: 0, x: -10 }}
+                transition={{
+                    duration: 0.2,
+                }}
                 key={`${itemSrc.src}${imageSrc.src}`}
             >
                 <Image
                     src={imageSrc}
                     alt="Наложенное изображение"
                     className={styles.overlappedImage}
+                    priority={true}
                 />
                 <Image
                     src={itemSrc}
                     alt="Изображение футболки"
                     className={styles.itemImage}
+                    priority={true}
                 />
             </motion.div>
         </AnimatePresence>

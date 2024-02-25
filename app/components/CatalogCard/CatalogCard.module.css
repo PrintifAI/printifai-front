@@ -7,6 +7,8 @@
     height: 260px;
     border-radius: 8px;
     position: relative;
+    background: 10px 35% url("/figures/fig9.svg") no-repeat,
+    calc(100% - 10px) 6% url("/figures/fig10.svg") no-repeat;
 }
 
 .container:hover>div {
