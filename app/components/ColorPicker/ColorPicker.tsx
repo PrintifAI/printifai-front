@@ -3,7 +3,8 @@ import { ItemColor } from '../../../constants/ItemColor';
 
 import styles from './ColorPicker.module.css';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import classNames from 'classnames';
+import clsx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
 
 type Props = {
     color: ItemColor;
@@ -18,38 +19,56 @@ export const ColorPicker = ({ color, setColor }: Props) => {
     const [page, setPage] = useState(0);
 
     return (
-        <div className={styles.colorPicker}>
-            {page > 0 && (
-                <LeftOutlined
-                    onClick={() => {
-                        setPage((page) => page - 1);
-                    }}
-                />
-            )}
-            {Object.entries(ItemColor)
-                .slice(page * COLORS_PER_PAGE, (page + 1) * COLORS_PER_PAGE)
-                .map(([key, value]) => (
-                    <div
-                        key={key}
-                        className={classNames(
-                            color === value ? styles.picked : undefined,
-                            styles.colorEllipse,
-                        )}
-                        style={{
-                            backgroundColor: value,
-                        }}
+        <AnimatePresence mode="wait">
+            <motion.div
+                className={styles.colorPicker}
+                key={page}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                    duration: 0.2,
+                }}
+            >
+                {page > 0 && (
+                    <motion.div
+                        key="back"
+                        className={styles.iconDiv}
                         onClick={() => {
-                            setColor(value);
+                            setPage((page) => page - 1);
                         }}
-                    ></div>
-                ))}
-            {page < MAX_PAGES && (
-                <RightOutlined
-                    onClick={() => {
-                        setPage((page) => page + 1);
-                    }}
-                />
-            )}
-        </div>
+                    >
+                        <LeftOutlined />
+                    </motion.div>
+                )}
+                {Object.entries(ItemColor)
+                    .slice(page * COLORS_PER_PAGE, (page + 1) * COLORS_PER_PAGE)
+                    .map(([key, value]) => (
+                        <motion.div
+                            key={value}
+                            className={clsx(
+                                color === value ? styles.picked : undefined,
+                                styles.colorEllipse,
+                            )}
+                            style={{
+                                backgroundColor: value,
+                            }}
+                            onClick={() => {
+                                setColor(value);
+                            }}
+                        ></motion.div>
+                    ))}
+                {page < MAX_PAGES && (
+                    <motion.div
+                        key="front"
+                        className={styles.iconDiv}
+                        onClick={() => {
+                            setPage((page) => page + 1);
+                        }}
+                    >
+                        <RightOutlined />
+                    </motion.div>
+                )}
+            </motion.div>
+        </AnimatePresence>
     );
 };

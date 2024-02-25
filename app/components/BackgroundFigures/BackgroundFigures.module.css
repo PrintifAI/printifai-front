@@ -1,0 +1,52 @@
+.figure {
+    position: absolute;
+    z-index: 0;
+}
+
+.figuresContainer {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fig1 {
+    left: 10%;
+    top: 5%;
+}
+
+.fig2 {
+    left: calc(90% - 50px);
+    top: 5%;
+}
+
+.fig3 {
+    left: 7%;
+    top: 30% ;
+}
+
+.fig4 {
+    left:  calc(95% - 50px);
+    top: 30%;
+}
+
+.fig5 {
+    left: 10%;
+    top: 50% ;
+}
+
+.fig6 {
+    left: calc(95% - 50px);
+    top: 50%;
+}
+
+.fig7 {
+    left: 8%;
+    top: 70%;
+}
+
+.fig8 {
+    left: calc(90% - 50px);
+    top: 70%;
+}
+

@@ -4,8 +4,8 @@
     justify-content: flex-start;
     align-items: center;
     font-family: var(--font-roboto-flex);
-    color: var(--primary-color);
-    background-color: var(--primary-color);
+    color: var(--txt-black);
+    background-color: var(--txt-black);
 }
 
 .content {
@@ -16,6 +16,7 @@
     flex-direction: column;
     height: 100%;
     min-height: calc(100vh - 80px);
+    z-index: 100;
 }
 
 .wrapper {
@@ -23,11 +24,14 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    position: relative;
 
-    background: 50px 10% url("/figures/fig1.svg") no-repeat,
+    background-color: #FFF;
+
+    /* background: 50px 10% url("/figures/fig1.svg") no-repeat,
     calc(100% - 40px) 10% url("/figures/fig2.svg") no-repeat,
     30px 30% url("/figures/fig3.svg") no-repeat,
     calc(100% - 50px) 30% url("/figures/fig4.svg") no-repeat,
     50px 70% url("/figures/fig5.svg") no-repeat,
-    calc(100% - 40px) 70% url("/figures/fig6.svg") no-repeat, white;
+    calc(100% - 40px) 70% url("/figures/fig6.svg") no-repeat, white; */
 }

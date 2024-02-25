@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import styles from './Button.module.css';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 export const enum ButtonTheme {
     WhiteBackground = 'white',
@@ -32,7 +32,7 @@ export const Button = ({
 }: Props) => {
     return (
         <button
-            className={classNames(
+            className={clsx(
                 theme === ButtonTheme.WhiteBackground
                     ? styles.buttonWhite
                     : styles.buttonBlack,

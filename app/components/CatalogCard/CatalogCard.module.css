@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary-color);
     padding: 20px;
     width: 244px;
     height: 260px;
@@ -24,6 +23,7 @@
     align-items: center;
     padding: 10px 12px;
     background: rgba(53,53,53,0.54);
+    z-index: 30;
 }
 
 .price {

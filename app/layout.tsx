@@ -7,7 +7,8 @@ import { Footer } from './components/Footer/Footer';
 
 import styles from './layout.module.css';
 import { montserrat, ramabhadra, robotoFlex } from './fonts';
-import classNames from 'classnames';
+import clsx from 'clsx';
+import { BackgroundFigures } from './components/BackgroundFigures/BackgroundFigures';
 
 export const metadata: Metadata = {
     title: 'PrintifAI',
@@ -22,7 +23,7 @@ export default function RootLayout({
     return (
         <html lang="ru">
             <body
-                className={classNames(
+                className={clsx(
                     styles.body,
                     robotoFlex.variable,
                     montserrat.variable,
@@ -31,6 +32,7 @@ export default function RootLayout({
             >
                 <Header />
                 <div className={styles.wrapper}>
+                    <BackgroundFigures />
                     <div className={styles.content}>{children}</div>
                 </div>
                 <Footer />

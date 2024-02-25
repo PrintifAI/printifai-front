@@ -19,21 +19,20 @@
 }
 
 .buttonWhite {
-    background-color: var(--bg-color);
-    color: var(--primary-color);
+    background: #FFF;
+    color: var(--txt-black);
+    border: 1px solid var(--txt-black, rgba(0, 0, 0, 0.90));
 }
 
 .buttonBlack {
-    background-color: var(--primary-color);
-    color: var(--bg-color);
+    background-color: var(--txt-black);
+    color: #FFF;
 }
 
 .buttonBlack:hover {
-    background-color: var(--primary-color-hover);
-    color: var(--bg-color-hover);
+    color: var(--pink);
 }
 
 .buttonWhite:hover {
-    background-color: var(--bg-color-hover);
-    color: var(--primary-color-hover);
+    color: var(--pink);
 }

@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     gap: 30px;
     max-width: 800px;
+    width: 100%;
 }
 
 .catalog {
@@ -14,4 +15,5 @@
     align-items: center;
     gap: 34px;
     margin-bottom: 50px;
+    width: 100%;
 }

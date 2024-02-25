@@ -24,3 +24,7 @@
     gap: 10px;
     font-size: 22px;
 }
+
+.icon:hover  {
+    color: var(--pink);
+}

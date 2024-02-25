@@ -4,15 +4,28 @@
     gap: 7px;
     align-items: center;
     width: 100%;
+    height: 100%;
     color: white;
+}
+
+.colorPicker > div {
+    cursor: pointer;
+
 }
 
 .colorEllipse {
     border-radius: 100%;
     width: 14px;
     height: 14px;
+    cursor: pointer;
 }
 
 .picked {
     border: 1px white solid;
+}
+
+.iconDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
