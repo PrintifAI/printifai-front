@@ -16,10 +16,10 @@ export const MainText = () => {
                 >
                     Футболка
                 </motion.span>{' '}
-                о которой вы <span className={styles.underline1}>мечтали.</span>
+                о которой вы <span className={styles.underline1}>мечтали</span>
             </div>
             <div>
-                Просто <span className={styles.underline2}>попробуйте.</span>
+                Просто <span className={styles.underline2}>попробуйте</span>
             </div>
         </div>
     );
