@@ -6,11 +6,10 @@
 
 .overlappedImage{
     position: absolute;
-    max-height: 95px;
-    max-width: 75px;
+    max-width: 65px;
     z-index: 20;
     top: 50%;
-    transform: translate(-43%, -70%);
+    transform: translate(-46%, -70%);
     left: 50%;
 }
 
