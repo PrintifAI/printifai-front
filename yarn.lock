@@ -35,9 +35,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/icons@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@ant-design/icons@npm:5.3.0"
+"@ant-design/icons@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@ant-design/icons@npm:5.3.1"
   dependencies:
     "@ant-design/colors": "npm:^7.0.0"
     "@ant-design/icons-svg": "npm:^4.4.0"
@@ -47,7 +47,7 @@ __metadata:
   peerDependencies:
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
-  checksum: 10c0/564bae8360f44606214722d4a29c5f9a98a03539af11ba1ea9dec34d46e5ddd5abcb2bd1f78e274323b78b55357b07e52b54357203841fbf2aabdd1e294be72c
+  checksum: 10c0/31fa1f1db8daa2f32911ff6b761fcee4622cb46cd446694ad5c07df354a20bac84f43e8ab2b9e58417d801b37f4729a0296e4eb8244aaca77adb5f778ddc8b0b
   languageName: node
   linkType: hard
 
@@ -206,10 +206,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/env@npm:14.1.0"
-  checksum: 10c0/f45ce1e3dad87cdbddc58b06bd411f44a6d21dfc2c344d02a5e1b07f56fbc9a39e192c0b0917df9f2e9e4e2156306a8c78f173ca4b53932c2793e67797462a23
+"@next/env@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/env@npm:14.1.1"
+  checksum: 10c0/81f7ff4f5b295c7f73d5cfeceda387626fa3e30fe75c53021168ff525470e8d52598ee4f8bb924af0903a52c44b5779e6e4c26fbdd102a3fdfaa03c08fd2bdde
   languageName: node
   linkType: hard
 
@@ -222,65 +222,65 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-darwin-arm64@npm:14.1.0"
+"@next/swc-darwin-arm64@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-darwin-arm64@npm:14.1.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-darwin-x64@npm:14.1.0"
+"@next/swc-darwin-x64@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-darwin-x64@npm:14.1.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-linux-arm64-gnu@npm:14.1.0"
+"@next/swc-linux-arm64-gnu@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-linux-arm64-gnu@npm:14.1.1"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-linux-arm64-musl@npm:14.1.0"
+"@next/swc-linux-arm64-musl@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-linux-arm64-musl@npm:14.1.1"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-linux-x64-gnu@npm:14.1.0"
+"@next/swc-linux-x64-gnu@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-linux-x64-gnu@npm:14.1.1"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-linux-x64-musl@npm:14.1.0"
+"@next/swc-linux-x64-musl@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-linux-x64-musl@npm:14.1.1"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-win32-arm64-msvc@npm:14.1.0"
+"@next/swc-win32-arm64-msvc@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-win32-arm64-msvc@npm:14.1.1"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-win32-ia32-msvc@npm:14.1.0"
+"@next/swc-win32-ia32-msvc@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-win32-ia32-msvc@npm:14.1.1"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/swc-win32-x64-msvc@npm:14.1.0"
+"@next/swc-win32-x64-msvc@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/swc-win32-x64-msvc@npm:14.1.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -736,12 +736,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.17":
-  version: 10.4.17
-  resolution: "autoprefixer@npm:10.4.17"
+"autoprefixer@npm:^10.4.18":
+  version: 10.4.18
+  resolution: "autoprefixer@npm:10.4.18"
   dependencies:
-    browserslist: "npm:^4.22.2"
-    caniuse-lite: "npm:^1.0.30001578"
+    browserslist: "npm:^4.23.0"
+    caniuse-lite: "npm:^1.0.30001591"
     fraction.js: "npm:^4.3.7"
     normalize-range: "npm:^0.1.2"
     picocolors: "npm:^1.0.0"
@@ -750,7 +750,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: 10c0/1d21cc8edb7bf993682094ceed03a32c18f5293f071182a64c2c6defb44bbe91d576ad775d2347469a81997b80cea0bbc4ad3eeb5b12710f9feacf2e6c04bb51
+  checksum: 10c0/b6e1c1ba2fc6c09360cdcd75b00ce809c5dbe1ad4c30f0186764609a982aa5563d45965cb9e6a9d195c639a9fb1dcac2594484fc41624050195f626e9add666e
   languageName: node
   linkType: hard
 
@@ -819,17 +819,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.22.2":
-  version: 4.22.3
-  resolution: "browserslist@npm:4.22.3"
+"browserslist@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "browserslist@npm:4.23.0"
   dependencies:
-    caniuse-lite: "npm:^1.0.30001580"
-    electron-to-chromium: "npm:^1.4.648"
+    caniuse-lite: "npm:^1.0.30001587"
+    electron-to-chromium: "npm:^1.4.668"
     node-releases: "npm:^2.0.14"
     update-browserslist-db: "npm:^1.0.13"
   bin:
     browserslist: cli.js
-  checksum: 10c0/5a1f673ce0d6e61a68369835a6b66e199669bde02c3bed5ec51e77598d8daafd91719dba55b15af2021b9ad0bbaa94951fd702eb71087449eb28be8002815ece
+  checksum: 10c0/8e9cc154529062128d02a7af4d8adeead83ca1df8cd9ee65a88e2161039f3d68a4d40fea7353cab6bae4c16182dec2fdd9a1cf7dc2a2935498cee1af0e998943
   languageName: node
   linkType: hard
 
@@ -888,10 +888,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001578, caniuse-lite@npm:^1.0.30001579, caniuse-lite@npm:^1.0.30001580":
+"caniuse-lite@npm:^1.0.30001579":
   version: 1.0.30001585
   resolution: "caniuse-lite@npm:1.0.30001585"
   checksum: 10c0/d31b582ab2031ee6097aa8d6d8bc3a4e2f902e42033deb224fab210a0f380ce6be8f64a99be5aa63007ba1753ede157b75c64c1d9975ebf301c66e960b939886
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001587, caniuse-lite@npm:^1.0.30001591":
+  version: 1.0.30001591
+  resolution: "caniuse-lite@npm:1.0.30001591"
+  checksum: 10c0/21937d341c3d75994504db21340f65573a1e847a8ab33ee4964ed493994d6552864c494ba144485459abd9c711c75c0708bc9fa19f2bff525bff75ffb0a42c3b
   languageName: node
   linkType: hard
 
@@ -1129,10 +1136,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.4.648":
-  version: 1.4.665
-  resolution: "electron-to-chromium@npm:1.4.665"
-  checksum: 10c0/c97e00510f4a3f9dfa213957b997cd3f759fedece2627716b39f72294214f45e30f7e2ee3cc58a0ddb4b9b60e4ef07fd505200619c2f9aa31b89ce0bfc558679
+"electron-to-chromium@npm:^1.4.668":
+  version: 1.4.689
+  resolution: "electron-to-chromium@npm:1.4.689"
+  checksum: 10c0/07164698a7ca6f798eba0fefccc3987be98e996ff50af1d2b24a75d53bc5e5cd101e79bca1d5e66b3c87be3f549c66b89deaf6c19a9dbef0eb9a8e3f8d15d3f5
   languageName: node
   linkType: hard
 
@@ -1732,9 +1739,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^11.0.6":
-  version: 11.0.6
-  resolution: "framer-motion@npm:11.0.6"
+"framer-motion@npm:^11.0.8":
+  version: 11.0.8
+  resolution: "framer-motion@npm:11.0.8"
   dependencies:
     "@emotion/is-prop-valid": "npm:^0.8.2"
     tslib: "npm:^2.4.0"
@@ -1749,7 +1756,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/ba987848120847157eb2d8c7669808aa04081b753002c7d57b2adfca92da5de50470117a73e377476b3eec42d13b4c91456f649b97b7900dcc72cb980262af48
+  checksum: 10c0/098776e277b1707116c511f62261ed421381071258a6174c51bf1cdbb7ed436b5789fa114144426253d1719e6426d51e3f1812a9cbc1ca773361b63aacda8056
   languageName: node
   linkType: hard
 
@@ -2770,20 +2777,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.1.0":
-  version: 14.1.0
-  resolution: "next@npm:14.1.0"
+"next@npm:^14.1.1":
+  version: 14.1.1
+  resolution: "next@npm:14.1.1"
   dependencies:
-    "@next/env": "npm:14.1.0"
-    "@next/swc-darwin-arm64": "npm:14.1.0"
-    "@next/swc-darwin-x64": "npm:14.1.0"
-    "@next/swc-linux-arm64-gnu": "npm:14.1.0"
-    "@next/swc-linux-arm64-musl": "npm:14.1.0"
-    "@next/swc-linux-x64-gnu": "npm:14.1.0"
-    "@next/swc-linux-x64-musl": "npm:14.1.0"
-    "@next/swc-win32-arm64-msvc": "npm:14.1.0"
-    "@next/swc-win32-ia32-msvc": "npm:14.1.0"
-    "@next/swc-win32-x64-msvc": "npm:14.1.0"
+    "@next/env": "npm:14.1.1"
+    "@next/swc-darwin-arm64": "npm:14.1.1"
+    "@next/swc-darwin-x64": "npm:14.1.1"
+    "@next/swc-linux-arm64-gnu": "npm:14.1.1"
+    "@next/swc-linux-arm64-musl": "npm:14.1.1"
+    "@next/swc-linux-x64-gnu": "npm:14.1.1"
+    "@next/swc-linux-x64-musl": "npm:14.1.1"
+    "@next/swc-win32-arm64-msvc": "npm:14.1.1"
+    "@next/swc-win32-ia32-msvc": "npm:14.1.1"
+    "@next/swc-win32-x64-msvc": "npm:14.1.1"
     "@swc/helpers": "npm:0.5.2"
     busboy: "npm:1.6.0"
     caniuse-lite: "npm:^1.0.30001579"
@@ -2821,7 +2828,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 10c0/dbb1ef8d22eec29a9127d28ed46eb34f14e3f7f7b4e4b91dc96027feb4d9ead554a804275484d9a54026e6e55d632d3997561e598c1fb8e8956e77614f39765f
+  checksum: 10c0/8c808ec0861604a176fc6a4f58a7a3c50ef9201fc63e16fab88390cfcb30f2accf92add0600ab83d0d13cfdf4ef3a72b03b828bf255c4a999bad071aba6c071d
   languageName: node
   linkType: hard
 
@@ -3226,18 +3233,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "printifai-front@workspace:."
   dependencies:
-    "@ant-design/icons": "npm:^5.3.0"
+    "@ant-design/icons": "npm:^5.3.1"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
-    autoprefixer: "npm:^10.4.17"
+    autoprefixer: "npm:^10.4.18"
     clsx: "npm:^2.1.0"
     eslint: "npm:^8"
     eslint-config-next: "npm:^14.1.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
-    framer-motion: "npm:^11.0.6"
-    next: "npm:^14.1.0"
+    framer-motion: "npm:^11.0.8"
+    next: "npm:^14.1.1"
     postcss: "npm:^8.4.35"
     prettier: "npm:^3.2.5"
     react: "npm:^18"
