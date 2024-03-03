@@ -48,7 +48,8 @@ export const Button = ({
             type={type}
         >
             {left}
-            {children}
+
+            <div>{children}</div>
         </button>
     );
 };

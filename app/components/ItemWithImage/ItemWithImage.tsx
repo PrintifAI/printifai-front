@@ -1,10 +1,12 @@
+'use client';
+
 import Image, { StaticImageData } from 'next/image';
 
 import styles from './ItemWithImage.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type Props = {
-    imageSrc: StaticImageData;
+    imageSrc: StaticImageData | string;
     itemSrc: StaticImageData;
 };
 
@@ -19,9 +21,11 @@ export const ItemWithImage = ({ imageSrc, itemSrc }: Props) => {
                 transition={{
                     duration: 0.2,
                 }}
-                key={`${itemSrc.src}${imageSrc.src}`}
+                key={`${itemSrc.src}`}
             >
                 <Image
+                    width={856}
+                    height={1208}
                     src={imageSrc}
                     alt="Наложенное изображение"
                     className={styles.overlappedImage}

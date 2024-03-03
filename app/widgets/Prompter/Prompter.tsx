@@ -10,8 +10,12 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { PredictionResponse } from '../../../types/predictionTypes';
 
-export const Prompter = () => {
-    const [prompt, setPrompt] = useState('');
+type Props = {
+    initial?: string;
+};
+
+export const Prompter = ({ initial }: Props) => {
+    const [prompt, setPrompt] = useState(initial);
     const router = useRouter();
     const handleSubmit: FormEventHandler = (e) => {
         e.preventDefault();
@@ -42,7 +46,14 @@ export const Prompter = () => {
                 />
                 <Button
                     theme={ButtonTheme.BlackBackground}
-                    left={<Image width={45} src={sendIcon} alt="Отправить" />}
+                    left={
+                        <Image
+                            width={24}
+                            height={24}
+                            src={sendIcon}
+                            alt="Отправить"
+                        />
+                    }
                     className={styles.sendButton}
                     type="submit"
                 >

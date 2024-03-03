@@ -11,7 +11,10 @@ export default function Main() {
             <BackgroundFigures />
 
             <MainText />
-            <Prompter />
+            <div className={styles.prompterContainer}>
+                <Prompter />
+            </div>
+
             <div className={styles.afterPromptText}>
                 Вся мощь искусственного интеллекта для создания лучших вещей
             </div>

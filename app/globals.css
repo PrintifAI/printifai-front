@@ -1,1 +1,5 @@
 @tailwind base;
+
+img {
+    max-width: none;
+}

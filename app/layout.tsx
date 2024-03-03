@@ -9,6 +9,7 @@ import { Footer } from './components/Footer/Footer';
 import styles from './layout.module.css';
 import { montserrat, ramabhadra, robotoFlex } from './fonts';
 import clsx from 'clsx';
+import { Providers } from './components/Providers';
 
 export const metadata: Metadata = {
     title: 'PrintifAI',
@@ -30,11 +31,13 @@ export default function RootLayout({
                     ramabhadra.variable,
                 )}
             >
-                <Header />
-                <div className={styles.wrapper}>
-                    <div className={styles.content}>{children}</div>
-                </div>
-                <Footer />
+                <Providers>
+                    <Header />
+                    <div className={styles.wrapper}>
+                        <div className={styles.content}>{children}</div>
+                    </div>
+                    <Footer />
+                </Providers>
             </body>
         </html>
     );
