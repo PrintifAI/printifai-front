@@ -19,8 +19,8 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v5
-        env:
-          NEXT_PUBLIC_BACK_HOST: "https://printifai.ru/api"
         with:
           push: true
           tags: vanchenkin/printifai:front-latest
+          build-args: |
+            "NEXT_PUBLIC_BACK_HOST=https://printifai.ru/api"
