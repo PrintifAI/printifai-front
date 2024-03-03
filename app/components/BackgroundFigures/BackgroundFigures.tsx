@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { MotionValue, motion, useScroll, useTransform } from 'framer-motion';
 import clsx from 'clsx';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './BackgroundFigures.module.css';
 
@@ -16,67 +16,64 @@ import fig5 from '../../../public/figures/fig5.svg';
 import fig6 from '../../../public/figures/fig6.svg';
 import fig7 from '../../../public/figures/fig7.svg';
 import fig8 from '../../../public/figures/fig8.svg';
+import { usePathname } from 'next/navigation';
 
 function useParallax(value: MotionValue<number>, distance: number) {
     return useTransform(value, [0, 1], [0, distance]);
 }
 
 export const BackgroundFigures = () => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({ target: ref });
+    const { scrollYProgress } = useScroll();
+    const pathname = usePathname();
 
-    const y = useParallax(scrollYProgress, 150);
+    const [dimension, setDimension] = useState({ height: 0 });
+
+    useEffect(() => {
+        const resize = () => {
+            setDimension({
+                height:
+                    document.documentElement.getBoundingClientRect().height -
+                    window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', resize);
+
+        resize();
+
+        return () => {
+            window.removeEventListener('resize', resize);
+        };
+    }, [pathname]);
+
+    const y = useParallax(scrollYProgress, dimension.height * 0.5);
 
     return (
-        <div className={styles.figuresContainer} ref={ref}>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig1)}
-            >
+        <motion.div style={{ y }} className={styles.figuresContainer}>
+            <div className={clsx(styles.figure, styles.fig1)}>
                 <Image src={fig1} alt="" />
-            </motion.div>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig2)}
-            >
+            </div>
+            <div className={clsx(styles.figure, styles.fig2)}>
                 <Image src={fig2} alt="" />
-            </motion.div>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig3)}
-            >
+            </div>
+            <div className={clsx(styles.figure, styles.fig3)}>
                 <Image src={fig3} alt="" />
-            </motion.div>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig4)}
-            >
+            </div>
+            <div className={clsx(styles.figure, styles.fig4)}>
                 <Image src={fig4} alt="" />
-            </motion.div>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig5)}
-            >
+            </div>
+            <div className={clsx(styles.figure, styles.fig5)}>
                 <Image src={fig5} alt="" />
-            </motion.div>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig6)}
-            >
+            </div>
+            <div className={clsx(styles.figure, styles.fig6)}>
                 <Image src={fig6} alt="" />
-            </motion.div>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig7)}
-            >
+            </div>
+            <div className={clsx(styles.figure, styles.fig7)}>
                 <Image src={fig7} alt="" />
-            </motion.div>
-            <motion.div
-                style={{ y }}
-                className={clsx(styles.figure, styles.fig8)}
-            >
+            </div>
+            <div className={clsx(styles.figure, styles.fig8)}>
                 <Image src={fig8} alt="" />
-            </motion.div>
-        </div>
+            </div>
+        </motion.div>
     );
 };

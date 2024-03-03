@@ -1,13 +1,15 @@
-import { Prompter } from './components/Prompter/Prompter';
+import { Prompter } from './widgets/Prompter/Prompter';
 import { CatalogMini } from './widgets/CatalogMini/CatalogMini';
 
 import styles from './page.module.css';
-import { motion } from 'framer-motion';
 import { MainText } from './components/MainText/MainText';
+import { BackgroundFigures } from './components/BackgroundFigures/BackgroundFigures';
 
 export default function Main() {
     return (
         <>
+            <BackgroundFigures />
+
             <MainText />
             <Prompter />
             <div className={styles.afterPromptText}>

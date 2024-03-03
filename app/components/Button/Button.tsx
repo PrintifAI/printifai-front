@@ -20,6 +20,7 @@ type Props = {
     theme?: ButtonTheme;
     size?: ButtonSize;
     className?: string;
+    type?: 'button' | 'submit';
 };
 
 export const Button = ({
@@ -29,6 +30,7 @@ export const Button = ({
     onClick,
     theme,
     size,
+    type = 'button',
 }: Props) => {
     return (
         <button
@@ -43,6 +45,7 @@ export const Button = ({
                 className,
             )}
             onClick={onClick}
+            type={type}
         >
             {left}
             {children}

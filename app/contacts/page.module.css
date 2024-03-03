@@ -1,0 +1,7 @@
+.contactsText {
+    font-family: var(--font-montserrat);
+    font-size: 25px;
+    margin-top: 120px;
+    max-width: 600px;
+    text-align: center;
+}

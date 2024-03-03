@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.1",
+    "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
+    "joi": "^17.12.2",
     "next": "^14.1.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
     "@types/node": "^20",
