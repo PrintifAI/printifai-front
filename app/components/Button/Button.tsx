@@ -49,7 +49,7 @@ export const Button = ({
         >
             {left}
 
-            <div>{children}</div>
+            {children}
         </button>
     );
 };
