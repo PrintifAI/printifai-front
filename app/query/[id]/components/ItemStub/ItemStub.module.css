@@ -1,0 +1,13 @@
+.itemWithImage{
+    width: 403px;
+    height: 415px;
+}
+
+.generating {
+    color: var(--txt-black, rgba(0, 0, 0, 0.90));
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 48px;
+}

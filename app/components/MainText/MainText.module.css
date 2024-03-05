@@ -6,7 +6,7 @@
     flex-direction: column;
     font-size: clamp(20px, 4vw, 48px);
     font-family: var(--font-montserrat);
-    font-weight: 600;
+    font-weight: 700;
     gap: 20px;
     margin-top: 148px;
     margin-bottom: 50px;
@@ -19,6 +19,7 @@
     border-radius: 30px;
     padding: 10px 20px;
     display: inline-flex;
+    font-weight: 600;
 }
 
 .underline1 {

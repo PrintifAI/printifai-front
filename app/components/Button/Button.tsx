@@ -21,6 +21,7 @@ type Props = {
     size?: ButtonSize;
     className?: string;
     type?: 'button' | 'submit';
+    disabled?: boolean;
 };
 
 export const Button = ({
@@ -31,6 +32,7 @@ export const Button = ({
     theme,
     size,
     type = 'button',
+    disabled = false,
 }: Props) => {
     return (
         <button
@@ -46,6 +48,7 @@ export const Button = ({
             )}
             onClick={onClick}
             type={type}
+            disabled={disabled}
         >
             {left}
 

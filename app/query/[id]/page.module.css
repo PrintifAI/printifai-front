@@ -5,11 +5,6 @@
     flex-direction: column;
 }
 
-.itemWithImage{
-    width: 403px;
-    height: 415px;
-}
-
 .prompterContainer {
     width: 100%;
 }

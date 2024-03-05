@@ -6,13 +6,17 @@
     position: relative;
     font-family: var(--font-montserrat);
     font-size: 17px;
+    font-weight: 500;
     border: 0;
     line-height: normal;
     padding: 20px 0;
 }
 
-.prompterInput:focus {
-    outline: 0;
+.prompterInput::placeholder {
+    font-family: var(--font-montserrat);
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(113, 113, 113, 0.7);
 }
 
 .prompterContainer {
@@ -26,4 +30,10 @@
     width: 100%;
     box-shadow: 0px 20px 20px 0 rgba(0,0,0,0.15);
     background-color: #FFF;
+}
+
+.remain {
+    margin-top: 20px;
+    color: rgba(102, 101, 101, 1);
+    font-family: var(--font-montserrat);
 }

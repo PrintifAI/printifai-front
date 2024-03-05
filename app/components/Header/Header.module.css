@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 400;
     gap: 5px;
     height: 100%;
     box-sizing: padding-box;
@@ -36,7 +36,8 @@
     width: 100%;
     padding: 0 82px;
     font-size: 20px;
-    font-weight: 100;
+    font-weight: 300;
+    font-family: var(--font-roboto-flex);
     color: rgba(255,255,255,0.9);
     height: 100%;
     text-wrap: nowrap;
