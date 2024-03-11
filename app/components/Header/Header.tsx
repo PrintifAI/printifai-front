@@ -22,9 +22,6 @@ export const Header = () => {
                     <Link href="/how-it-works" className={styles.menuLink}>
                         Как это работает?
                     </Link>
-                    <Link href="/delivery" className={styles.menuLink}>
-                        Доставка
-                    </Link>
                     <Link href="/faq" className={styles.menuLink}>
                         FAQ
                     </Link>

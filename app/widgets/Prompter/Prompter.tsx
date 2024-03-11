@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Button, ButtonTheme } from '../../components/Button/Button';
 import styles from './Prompter.module.css';
 import sendIcon from '../../../public/icons/send_icon.svg';
-import { FormEventHandler, useState } from 'react';
+import { FormEventHandler, useEffect, useState } from 'react';
 import { Config } from '../../../config/config';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
@@ -14,13 +14,28 @@ import { useFingerprint } from '../../../hooks/useFingerprint';
 const MAX_REQUESTS_NUMBERS = 10;
 
 type Props = {
-    initial?: string;
     withRemain?: boolean;
+    value?: string;
+    onChange?: (value: string) => void;
 };
 
-export const Prompter = ({ initial, withRemain = false }: Props) => {
-    const [prompt, setPrompt] = useState(initial);
+export const Prompter = ({
+    value = '',
+    onChange,
+    withRemain = false,
+}: Props) => {
+    const [prompt, setPrompt] = useState(value || '');
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        setPrompt(value);
+    }, [value]);
+
+    useEffect(() => {
+        if (onChange) {
+            onChange(prompt);
+        }
+    }, [prompt, onChange]);
 
     const fingerprintState = useFingerprint();
 
@@ -55,6 +70,7 @@ export const Prompter = ({ initial, withRemain = false }: Props) => {
                     className={styles.prompterInput}
                     placeholder="Космонавт верхом на радужном единороге"
                     required
+                    autoComplete="off"
                 />
                 <Button
                     theme={ButtonTheme.BlackBackground}

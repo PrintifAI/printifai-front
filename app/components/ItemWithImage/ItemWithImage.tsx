@@ -4,13 +4,18 @@ import Image, { StaticImageData } from 'next/image';
 
 import styles from './ItemWithImage.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Loader } from '../Loader/Loader';
+
+const IMAGE_WIDTH = 856;
+const IMAGE_HEIGHT = 1208;
 
 type Props = {
-    imageSrc: StaticImageData | string;
+    imageSrc?: StaticImageData | string;
+    loading?: boolean;
     itemSrc: StaticImageData;
 };
 
-export const ItemWithImage = ({ imageSrc, itemSrc }: Props) => {
+export const ItemWithImage = ({ imageSrc, itemSrc, loading }: Props) => {
     return (
         <AnimatePresence mode="wait">
             <motion.div
@@ -23,14 +28,22 @@ export const ItemWithImage = ({ imageSrc, itemSrc }: Props) => {
                 }}
                 key={`${itemSrc.src}`}
             >
-                <Image
-                    width={856}
-                    height={1208}
-                    src={imageSrc}
-                    alt="Наложенное изображение"
-                    className={styles.overlappedImage}
-                    priority={true}
-                />
+                {!loading && imageSrc && (
+                    <Image
+                        width={IMAGE_WIDTH}
+                        height={IMAGE_HEIGHT}
+                        src={imageSrc}
+                        alt="Наложенное изображение"
+                        className={styles.overlappedImage}
+                        priority={true}
+                        style={{
+                            height: '44%',
+                            transform: 'translate(-50%, -65%)',
+                        }}
+                    />
+                )}
+                {loading && <Loader />}
+
                 <Image
                     src={itemSrc}
                     alt="Изображение футболки"

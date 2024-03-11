@@ -1,0 +1,11 @@
+.itemWithImage{
+    width: 403px;
+    height: 415px;
+}
+
+.colorEllipse {
+    border-radius: 100%;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}

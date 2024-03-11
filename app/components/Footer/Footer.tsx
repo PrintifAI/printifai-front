@@ -6,7 +6,7 @@ export const Footer = () => {
     return (
         <div className={styles.footer}>
             <div className={styles.footerContent}>
-                <div>@Copyright PrintifAI 2023. Все права зарезервированы.</div>
+                <div>@Copyright PrintifAI 2024. Все права зарезервированы.</div>
                 <div className={styles.icons}>
                     <a href="youtube.com" className={styles.icon}>
                         <YoutubeOutlined />

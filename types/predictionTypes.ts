@@ -5,7 +5,7 @@ export type PredictionResponse = {
 };
 
 export enum PredictionStatus {
-    Ready = 'ready',
-    Failed = 'failed',
-    Created = 'created',
+    Ready = 'Ready',
+    Failed = 'Failed',
+    Created = 'Created',
 }
