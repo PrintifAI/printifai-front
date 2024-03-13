@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import styles from './Button.module.css';
 import clsx from 'clsx';
+import { Loader } from '../Loader/Loader';
 
 export const enum ButtonTheme {
     WhiteBackground = 'white',
@@ -22,6 +23,8 @@ type Props = {
     className?: string;
     type?: 'button' | 'submit';
     disabled?: boolean;
+    loading?: boolean;
+    id?: string;
 };
 
 export const Button = ({
@@ -33,9 +36,12 @@ export const Button = ({
     size,
     type = 'button',
     disabled = false,
+    loading = false,
+    id,
 }: Props) => {
     return (
         <button
+            id={id}
             className={clsx(
                 theme === ButtonTheme.WhiteBackground
                     ? styles.buttonWhite
@@ -50,9 +56,8 @@ export const Button = ({
             type={type}
             disabled={disabled}
         >
-            {left}
-
-            {children}
+            {loading && <Loader />}
+            {left} {children}
         </button>
     );
 };

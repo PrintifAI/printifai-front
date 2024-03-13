@@ -1,3 +1,8 @@
 export type DesignResponse = {
-    id: string;
+    // id: string;
+    predictionId: string;
+};
+
+export type Design = {
+    predictionId: string;
 };

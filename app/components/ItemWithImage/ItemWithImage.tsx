@@ -5,6 +5,7 @@ import Image, { StaticImageData } from 'next/image';
 import styles from './ItemWithImage.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loader } from '../Loader/Loader';
+import { ItemType } from '../../../types/itemTypes';
 
 const IMAGE_WIDTH = 856;
 const IMAGE_HEIGHT = 1208;
@@ -13,6 +14,7 @@ type Props = {
     imageSrc?: StaticImageData | string;
     loading?: boolean;
     itemSrc: StaticImageData;
+    type: ItemType;
 };
 
 export const ItemWithImage = ({ imageSrc, itemSrc, loading }: Props) => {

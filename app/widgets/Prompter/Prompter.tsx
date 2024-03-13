@@ -10,32 +10,24 @@ import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { PredictionResponse } from '../../../types/predictionTypes';
 import { useFingerprint } from '../../../hooks/useFingerprint';
+import { getCardLink } from '../../../utils/getCardLink';
+import { ItemType } from '../../../types/itemTypes';
+import { TshirtColor } from '../../../constants/ItemColor';
 
 const MAX_REQUESTS_NUMBERS = 10;
 
 type Props = {
     withRemain?: boolean;
     value?: string;
-    onChange?: (value: string) => void;
 };
 
-export const Prompter = ({
-    value = '',
-    onChange,
-    withRemain = false,
-}: Props) => {
+export const Prompter = ({ value = '', withRemain = false }: Props) => {
     const [prompt, setPrompt] = useState(value || '');
     const [error, setError] = useState('');
 
     useEffect(() => {
         setPrompt(value);
     }, [value]);
-
-    useEffect(() => {
-        if (onChange) {
-            onChange(prompt);
-        }
-    }, [prompt, onChange]);
 
     const fingerprintState = useFingerprint();
 
@@ -52,7 +44,12 @@ export const Prompter = ({
             })
             .then((response) => {
                 const id = response.data.id;
-                router.replace(`/query/${id}`);
+                router.push(
+                    getCardLink(id, {
+                        type: ItemType.Tshirt,
+                        color: TshirtColor.White,
+                    }),
+                );
             })
             .catch((response: AxiosError) => {
                 setError(response.response?.data as string);

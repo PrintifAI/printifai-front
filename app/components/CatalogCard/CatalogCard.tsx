@@ -1,6 +1,5 @@
 'use client';
 
-import { StaticImageData } from 'next/image';
 import styles from './CatalogCard.module.css';
 import { ItemWithImage } from '../ItemWithImage/ItemWithImage';
 
@@ -11,60 +10,60 @@ import { Button, ButtonSize, ButtonTheme } from '../Button/Button';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { ColorPicker } from '../ColorPicker/ColorPicker';
 
-import item1 from '../../../public/images/items/item1.png';
-import item2 from '../../../public/images/items/item2.png';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
+import { getImageLink } from '../../../utils/getImageLink';
+import { getCardLink } from '../../../utils/getCardLink';
+import Link from 'next/link';
+import { Item } from '../../../types/itemTypes';
+import { Price } from '../../../constants/prices';
+import { ItemTheme, itemsMapping } from '../../../constants/itemMapping';
 
 type Props = {
-    src: StaticImageData;
-    price: number;
+    item: Item;
+    predictionId: string;
 };
 
-enum Theme {
-    Dark = 'dark',
-    Light = 'light',
-}
+export const CatalogCard = ({ item, predictionId }: Props) => {
+    const [color, setColor] = useState<ItemColor>(item.color);
 
-const colorImageMapping: Record<
-    ItemColor,
-    { src: StaticImageData; theme: Theme }
-> = {
-    [ItemColor.White]: { src: item1, theme: Theme.Light },
-    [ItemColor.Black]: { src: item2, theme: Theme.Dark },
-    [ItemColor.Red]: { src: item1, theme: Theme.Light },
-    [ItemColor.LightBlue]: { src: item1, theme: Theme.Light },
-    [ItemColor.Blue]: { src: item1, theme: Theme.Dark },
-    [ItemColor.Pink]: { src: item1, theme: Theme.Light },
-    [ItemColor.Purple]: { src: item1, theme: Theme.Light },
-};
-
-export const CatalogCard = ({ src, price }: Props) => {
-    const [color, setColor] = useState<ItemColor>(ItemColor.White);
+    const colors = Object.keys(itemsMapping[item.type]) as ItemColor[];
 
     return (
         <motion.div
             className={clsx(styles.container)}
             animate={{
                 backgroundColor:
-                    colorImageMapping[color].theme === Theme.Dark
+                    itemsMapping[item.type][color].theme === ItemTheme.Dark
                         ? 'var(--grey-white, #EEE)'
                         : 'var(--txt-black)',
             }}
         >
             <ItemWithImage
-                imageSrc={src}
-                itemSrc={colorImageMapping[color].src}
+                imageSrc={getImageLink(predictionId)}
+                itemSrc={itemsMapping[item.type][color].src}
+                type={item.type}
             />
             <div className={styles.onHoverBlock}>
-                <ColorPicker setColor={setColor} color={color} />
-                <div className={styles.price}>{price} ₽</div>
-                <Button
-                    theme={ButtonTheme.WhiteBackground}
-                    size={ButtonSize.Small}
+                <ColorPicker
+                    setColor={setColor}
+                    color={color}
+                    colors={colors}
+                />
+                <div className={styles.price}>{Price[item.type]} ₽</div>
+                <Link
+                    href={getCardLink(predictionId, {
+                        ...item,
+                        color,
+                    })}
                 >
-                    <ShoppingCartOutlined style={{ fontSize: '16px' }} />
-                </Button>
+                    <Button
+                        theme={ButtonTheme.WhiteBackground}
+                        size={ButtonSize.Small}
+                    >
+                        <ShoppingCartOutlined style={{ fontSize: '16px' }} />
+                    </Button>
+                </Link>
             </div>
         </motion.div>
     );

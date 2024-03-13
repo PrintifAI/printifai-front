@@ -1,42 +1,72 @@
-'use client';
-
-import item from '../../../../../public/images/items/item1.png';
 import { ItemWithImage } from '../../../../components/ItemWithImage/ItemWithImage';
 
 import styles from './ItemPicker.module.css';
 import { PredictionResponse } from '../../../../../types/predictionTypes';
-import { Config } from '../../../../../config/config';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { ItemColor } from '../../../../../constants/ItemColor';
+import { TshirtColor } from '../../../../../constants/ItemColor';
 import { Button, ButtonTheme } from '../../../../components/Button/Button';
 import { RightOutlined } from '@ant-design/icons';
-import { History } from '../History/History';
+import { getImageLink } from '../../../../../utils/getImageLink';
+import { Item, ItemType } from '../../../../../types/itemTypes';
+import { itemsMapping } from '../../../../../constants/itemMapping';
+import { Tooltip } from 'react-tooltip';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { addQueryParamToPath } from '../../../../../utils/addQueryParamToPath';
 
-export const getImageLink = (id: string) => {
-    return `${Config.BACK_HOST}/query/${id}/image`;
+const ItemTypeMapping: Record<ItemType, string> = {
+    [ItemType.Tshirt]: 'Футболка',
+    [ItemType.Hoodie]: 'Худи',
+    [ItemType.Shopper]: 'Шоппер',
 };
 
 type Props = {
     prediction: PredictionResponse;
+    item: Item;
+    onNext: () => void;
 };
 
-export const ItemPicker = ({ prediction }: Props) => {
-    const [color, setColor] = useState(ItemColor.White);
+export const ItemPicker = ({ prediction, item, onNext }: Props) => {
+    const [color, setColor] = useState(item.color);
+    const [itemType, setItemType] = useState(item.type);
+
+    const router = useRouter();
+    const query = useSearchParams();
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const url = addQueryParamToPath({
+            pathname,
+            query,
+            params: {
+                color,
+                type: itemType,
+            },
+        });
+
+        router.replace(url);
+    }, [color, itemType, query, pathname, router]);
 
     return (
-        <div className={styles.itemWithImage}>
+        <div>
             <div>
-                <div>Футболка</div>
+                {Object.values(ItemType).map((value) => (
+                    <div onClick={() => setItemType(value)} key={value}>
+                        {ItemTypeMapping[value]}
+                    </div>
+                ))}
             </div>
 
-            <ItemWithImage
-                itemSrc={item}
-                imageSrc={getImageLink(prediction.id)}
-            />
+            <div className={styles.itemWithImage}>
+                <ItemWithImage
+                    itemSrc={itemsMapping[itemType][color].src}
+                    imageSrc={getImageLink(prediction.id)}
+                    type={ItemType.Tshirt}
+                />
+            </div>
 
             <div>
-                {Object.entries(ItemColor).map(([key, value]) => (
+                {Object.entries(TshirtColor).map(([key, value]) => (
                     <div
                         key={key}
                         className={clsx(
@@ -54,15 +84,22 @@ export const ItemPicker = ({ prediction }: Props) => {
             </div>
 
             <div>
-                <Button disabled theme={ButtonTheme.WhiteBackground}>
+                <Tooltip anchorSelect="#cut-background-button">
+                    Функция в разработке
+                </Tooltip>
+                <Button
+                    id="cut-background-button"
+                    disabled
+                    theme={ButtonTheme.WhiteBackground}
+                >
                     Вырезать фон
                 </Button>
-                <Button>
+                <Button onClick={onNext}>
                     <RightOutlined />
                 </Button>
             </div>
 
-            <History />
+            {/* <History /> */}
         </div>
     );
 };

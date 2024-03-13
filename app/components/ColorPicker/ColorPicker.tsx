@@ -6,16 +6,15 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
+const COLORS_PER_PAGE = 4;
+
 type Props = {
     color: ItemColor;
     setColor: (color: ItemColor) => void;
+    colors: ItemColor[];
 };
 
-const COLORS_LENGTH = Object.keys(ItemColor).length;
-const COLORS_PER_PAGE = 4;
-const MAX_PAGES = Math.floor(COLORS_LENGTH / COLORS_PER_PAGE);
-
-export const ColorPicker = ({ color, setColor }: Props) => {
+export const ColorPicker = ({ color, setColor, colors }: Props) => {
     const [page, setPage] = useState(0);
 
     return (
@@ -40,24 +39,24 @@ export const ColorPicker = ({ color, setColor }: Props) => {
                         <LeftOutlined />
                     </motion.div>
                 )}
-                {Object.entries(ItemColor)
+                {colors
                     .slice(page * COLORS_PER_PAGE, (page + 1) * COLORS_PER_PAGE)
-                    .map(([key, value]) => (
+                    .map((i) => (
                         <motion.div
-                            key={value}
+                            key={i}
                             className={clsx(
-                                color === value ? styles.picked : undefined,
+                                i === color ? styles.picked : undefined,
                                 styles.colorEllipse,
                             )}
                             style={{
-                                backgroundColor: value,
+                                backgroundColor: i,
                             }}
                             onClick={() => {
-                                setColor(value);
+                                setColor(i);
                             }}
                         ></motion.div>
                     ))}
-                {page < MAX_PAGES && (
+                {page < Math.floor(colors.length / COLORS_PER_PAGE) && (
                     <motion.div
                         key="front"
                         className={styles.iconDiv}
