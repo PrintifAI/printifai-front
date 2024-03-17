@@ -1,0 +1,23 @@
+
+.colorPicker {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 0;
+}
+
+.colorEllipse {
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    outline: 0.25px solid black;
+}
+
+.borderBlack {
+    border: 1px solid var(--txt-black, rgba(0, 0, 0, 0.90));
+}
+
+.borderWhite {
+    border: 1px solid white;
+}

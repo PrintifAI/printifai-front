@@ -7,11 +7,15 @@
     gap: 10px;
     font-family: var(--font-roboto);
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.buttonLarge {
+    padding: 10px 32px;
 }
 
 .buttonMedium {
-    padding: 10px 20px;
+    padding: 10px 23px;
 }
 
 .buttonSmall {

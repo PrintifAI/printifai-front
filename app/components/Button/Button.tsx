@@ -10,6 +10,7 @@ export const enum ButtonTheme {
 }
 
 export const enum ButtonSize {
+    Large = 'large',
     Medium = 'medium',
     Small = 'small',
 }
@@ -33,7 +34,7 @@ export const Button = ({
     left,
     onClick,
     theme,
-    size,
+    size = ButtonSize.Medium,
     type = 'button',
     disabled = false,
     loading = false,
@@ -48,7 +49,9 @@ export const Button = ({
                     : styles.buttonBlack,
                 size === ButtonSize.Small
                     ? styles.buttonSmall
-                    : styles.buttonMedium,
+                    : size === ButtonSize.Medium
+                      ? styles.buttonMedium
+                      : styles.buttonLarge,
                 styles.button,
                 className,
             )}

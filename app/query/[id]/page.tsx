@@ -19,12 +19,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { ItemColor, TshirtColor } from '../../../constants/ItemColor';
 import { ItemType } from '../../../types/itemTypes';
-import { ItemWithImage } from '../../components/ItemWithImage/ItemWithImage';
-import { getImageLink } from '../../../utils/getImageLink';
-import { itemsMapping } from '../../../constants/itemMapping';
-import { Accordeon } from '../../components/Accordeon/Accordeon';
-import { Price } from '../../../constants/prices';
-import { Button } from '../../components/Button/Button';
+import { ItemSizePick } from './widgets/ItemSizePick/ItemSizePick';
+import { useSearchParams, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { addQueryParamToPath } from '../../../utils/addQueryParamToPath';
 
 const CHECK_INTERVAL = 1000;
 
@@ -45,10 +43,12 @@ export default function Prediction({
     searchParams: SearchParams;
 }) {
     const id = params.id;
-    const type = searchParams.type;
-    const color = searchParams.color;
+    const typeParam = searchParams.type;
+    const colorParam = searchParams.color;
 
     const [secondPage, setSecondPage] = useState(false);
+    const [color, setColor] = useState(colorParam || TshirtColor.White);
+    const [type, setType] = useState(typeParam || ItemType.Tshirt);
 
     const { data: prediction, refetch } = useQuery({
         queryKey: ['prediction', id],
@@ -73,34 +73,32 @@ export default function Prediction({
         };
     }, [refetch, prediction]);
 
+    const router = useRouter();
+    const query = useSearchParams();
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const url = addQueryParamToPath({
+            pathname,
+            query,
+            params: {
+                color,
+                type: type,
+            },
+        });
+
+        router.replace(url);
+    }, [color, type, query, pathname, router]);
+
     if (secondPage && color && type) {
         return (
-            <div className={styles.wrapper}>
-                <div>
-                    <div className={styles.itemWithImage}>
-                        <ItemWithImage
-                            itemSrc={itemsMapping[type][color].src}
-                            imageSrc={getImageLink(id)}
-                            type={type}
-                        />
-                    </div>
-                    <div>
-                        <Accordeon>123</Accordeon>
-                        <Accordeon>123</Accordeon>
-                        <Accordeon>123</Accordeon>
-                    </div>
-                </div>
-
-                <div>
-                    <div>{prediction?.sourcePrompt}</div>
-                    <div>Размер</div>
-                    <div>{Price[type]} Р</div>
-                    <div>
-                        <div>1</div>
-                        <Button>Добавить в корзину</Button>
-                    </div>
-                </div>
-            </div>
+            <ItemSizePick
+                prediction={prediction!}
+                color={color}
+                setColor={setColor}
+                type={type}
+                setSecondPage={(value) => setSecondPage(value)}
+            />
         );
     }
 
@@ -124,10 +122,10 @@ export default function Prediction({
             {prediction?.status === PredictionStatus.Ready && (
                 <ItemPicker
                     prediction={prediction}
-                    item={{
-                        type: type || ItemType.Tshirt,
-                        color: color || TshirtColor.White,
-                    }}
+                    type={type || ItemType.Tshirt}
+                    color={color}
+                    setColor={setColor}
+                    setType={setType}
                     onNext={() => setSecondPage(true)}
                 />
             )}

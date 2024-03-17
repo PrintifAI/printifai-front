@@ -1,6 +1,6 @@
 import { StaticImageData } from 'next/image';
 import { ItemType } from '../types/itemTypes';
-import { TshirtColor, ShopperColor, HoodieColor } from './ItemColor';
+import { TshirtColor, ShopperColor, HoodieColor, ItemColor } from './ItemColor';
 
 import item1 from '../public/images/items/item1.png';
 import item2 from '../public/images/items/item2.png';
@@ -10,9 +10,9 @@ export enum ItemTheme {
     Light = 'light',
 }
 
-export const itemsMapping: Record<
+export const ItemsMapping: Record<
     ItemType,
-    Record<TshirtColor, { src: StaticImageData; theme: ItemTheme }>
+    Record<ItemColor, { src: StaticImageData; theme: ItemTheme }>
 > = {
     [ItemType.Tshirt]: {
         [TshirtColor.White]: { src: item1, theme: ItemTheme.Light },

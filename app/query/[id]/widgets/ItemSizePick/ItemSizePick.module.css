@@ -1,0 +1,46 @@
+.wrapper {
+    width: 850px;
+}
+
+.itemWithImage{
+    width: 403px;
+    height: 415px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    background: 10px 35% url("/figures/fig9.svg") no-repeat,
+    calc(100% - 10px) 6% url("/figures/fig10.svg") no-repeat, var(--txt-black);
+}
+
+.gridWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+}
+
+.headText {
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+}
+
+.price {
+    font-family: var(--font-montserrat);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    margin-top: 28px;
+}
+
+.addToCardBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 32px;
+}
+

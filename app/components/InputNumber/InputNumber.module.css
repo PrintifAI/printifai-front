@@ -1,0 +1,13 @@
+.block {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--grey, #A5A5A5);
+    padding: 12px;
+}
+
+.block input {
+    width: auto;
+    text-align: center;
+}

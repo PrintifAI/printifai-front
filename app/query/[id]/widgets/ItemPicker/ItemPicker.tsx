@@ -2,17 +2,16 @@ import { ItemWithImage } from '../../../../components/ItemWithImage/ItemWithImag
 
 import styles from './ItemPicker.module.css';
 import { PredictionResponse } from '../../../../../types/predictionTypes';
-import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { TshirtColor } from '../../../../../constants/ItemColor';
+import { ItemColor } from '../../../../../constants/ItemColor';
 import { Button, ButtonTheme } from '../../../../components/Button/Button';
 import { RightOutlined } from '@ant-design/icons';
 import { getImageLink } from '../../../../../utils/getImageLink';
-import { Item, ItemType } from '../../../../../types/itemTypes';
-import { itemsMapping } from '../../../../../constants/itemMapping';
+import { ItemType } from '../../../../../types/itemTypes';
+import { ItemsMapping } from '../../../../../constants/itemMapping';
 import { Tooltip } from 'react-tooltip';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { addQueryParamToPath } from '../../../../../utils/addQueryParamToPath';
+import { Magnifier } from '../../../../components/Magnifier/Magnifier';
+import { ColorPicker } from '../../components/ColorPicker/ColorPicker';
 
 const ItemTypeMapping: Record<ItemType, string> = {
     [ItemType.Tshirt]: 'Футболка',
@@ -22,68 +21,55 @@ const ItemTypeMapping: Record<ItemType, string> = {
 
 type Props = {
     prediction: PredictionResponse;
-    item: Item;
+    type: ItemType;
+    color: ItemColor;
+    setColor: (color: ItemColor) => void;
+    setType: (type: ItemType) => void;
     onNext: () => void;
 };
 
-export const ItemPicker = ({ prediction, item, onNext }: Props) => {
-    const [color, setColor] = useState(item.color);
-    const [itemType, setItemType] = useState(item.type);
-
-    const router = useRouter();
-    const query = useSearchParams();
-    const pathname = usePathname();
-
-    useEffect(() => {
-        const url = addQueryParamToPath({
-            pathname,
-            query,
-            params: {
-                color,
-                type: itemType,
-            },
-        });
-
-        router.replace(url);
-    }, [color, itemType, query, pathname, router]);
-
+export const ItemPicker = ({
+    prediction,
+    color,
+    type,
+    setType,
+    setColor,
+    onNext,
+}: Props) => {
     return (
-        <div>
-            <div>
+        <div className={styles.itemPicker}>
+            <div className={styles.itemTypeMenu}>
                 {Object.values(ItemType).map((value) => (
-                    <div onClick={() => setItemType(value)} key={value}>
-                        {ItemTypeMapping[value]}
-                    </div>
-                ))}
-            </div>
-
-            <div className={styles.itemWithImage}>
-                <ItemWithImage
-                    itemSrc={itemsMapping[itemType][color].src}
-                    imageSrc={getImageLink(prediction.id)}
-                    type={ItemType.Tshirt}
-                />
-            </div>
-
-            <div>
-                {Object.entries(TshirtColor).map(([key, value]) => (
-                    <div
-                        key={key}
+                    <button
+                        onClick={() => setType(value)}
+                        key={value}
                         className={clsx(
-                            color === value ? styles.picked : undefined,
-                            styles.colorEllipse,
+                            styles.itemType,
+                            type === value ? styles.itemTypePicked : undefined,
                         )}
-                        style={{
-                            backgroundColor: value,
-                        }}
-                        onClick={() => {
-                            setColor(value);
-                        }}
-                    />
+                    >
+                        {ItemTypeMapping[value]}
+                    </button>
                 ))}
             </div>
 
-            <div>
+            <Magnifier>
+                <div className={styles.itemWithImage}>
+                    <ItemWithImage
+                        itemSrc={ItemsMapping[type][color].src}
+                        imageSrc={getImageLink(prediction.id)}
+                        type={ItemType.Tshirt}
+                    />
+                </div>
+            </Magnifier>
+
+            <ColorPicker
+                color={color}
+                onChange={(color) => setColor(color)}
+                itemType={type}
+            />
+
+            <div className={styles.buttons}>
                 <Tooltip anchorSelect="#cut-background-button">
                     Функция в разработке
                 </Tooltip>

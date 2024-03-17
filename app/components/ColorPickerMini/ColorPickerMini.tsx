@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ItemColor } from '../../../constants/ItemColor';
 
-import styles from './ColorPicker.module.css';
+import styles from './ColorPickerMini.module.css';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';

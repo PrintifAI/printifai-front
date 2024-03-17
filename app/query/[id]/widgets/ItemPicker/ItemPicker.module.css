@@ -3,9 +3,32 @@
     height: 415px;
 }
 
-.colorEllipse {
-    border-radius: 100%;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
+.itemPicker {
+    margin-top: 48px;
+}
+
+.itemTypeMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.itemType {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+}
+
+.itemTypePicked {
+    border: 1px solid var(--pink, #FF83C6);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 16px;
+    margin-bottom: 40px;
 }
