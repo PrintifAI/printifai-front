@@ -53,3 +53,7 @@
 .menuLink:hover{
     color: var(--pink);
 }
+
+.cart {
+    position: relative;
+}

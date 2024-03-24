@@ -1,0 +1,17 @@
+.count { 
+    border-radius: 19px;
+    background: var(--blue, #215FF6);
+    position: absolute;
+    right: -5px;
+    top: 0;
+    width: 14px;
+    height: 13px;
+    padding: 1px 4px;
+    color: rgba(255, 255, 255, 0.90);
+    text-align: justify;
+    font-family: var(--font-roboto);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

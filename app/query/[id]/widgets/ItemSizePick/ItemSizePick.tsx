@@ -5,7 +5,7 @@ import { Price } from '../../../../../constants/prices';
 import { ItemType } from '../../../../../types/itemTypes';
 import { PredictionResponse } from '../../../../../types/predictionTypes';
 import { getImageLink } from '../../../../../utils/getImageLink';
-import { Accordeon } from '../../../../components/Accordeon/Accordeon';
+import { Accordion } from '../../../../components/Accordion/Accordion';
 import { Button, ButtonSize } from '../../../../components/Button/Button';
 import { ItemWithImage } from '../../../../components/ItemWithImage/ItemWithImage';
 import { BackButtonWithEvent } from '../../components/BackButtonWithEvent/BackButtonWithEvent';
@@ -26,8 +26,68 @@ const options = [
     { value: 'xxl', label: 'XXL' },
 ];
 
+const AccordionsMapping = {
+    [ItemType.Tshirt]: (
+        <>
+            <Accordion title="Таблица размеров">
+                <table className={styles.accordionTable}>
+                    <thead>
+                        <tr>
+                            <th>Размер</th>
+                            <th>Обхват груди</th>
+                            <th>Обхват талии</th>
+                            <th>Длина</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>XS</td>
+                            <td>80-84 см</td>
+                            <td>80-84 см</td>
+                            <td>60 см</td>
+                        </tr>
+                        <tr>
+                            <td>XS</td>
+                            <td>80-84 см</td>
+                            <td>80-84 см</td>
+                            <td>60 см</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Accordion>
+            <Accordion title="Состав">
+                Состав: хлопок 100 %. Принты наносятся методом цифровой печати.
+            </Accordion>
+            <Accordion title="Как ухаживать за вещью">
+                — стирать в теплой воде (до 40 °С)
+                <br />— гладить при средней температуре (до 100–150 °С)
+                <br />— не отбеливать
+                <br />— не подвергать химчистке.
+            </Accordion>
+        </>
+    ),
+    [ItemType.Hoodie]: (
+        <>
+            <Accordion title="Таблица размеров">123</Accordion>
+            <Accordion title="Состав">
+                Состав: хлопок 100 %. Принты наносятся методом цифровой печати.
+            </Accordion>
+            <Accordion title="Как ухаживать за вещью">123</Accordion>
+        </>
+    ),
+    [ItemType.Shopper]: (
+        <>
+            <Accordion title="Таблица размеров">123</Accordion>
+            <Accordion title="Состав">
+                Состав: хлопок 100 %. Принты наносятся методом цифровой печати.
+            </Accordion>
+            <Accordion title="Как ухаживать за вещью">123</Accordion>
+        </>
+    ),
+};
+
 type Props = {
-    prediction: PredictionResponse;
+    prediction?: PredictionResponse;
     color: ItemColor;
     setColor: (color: ItemColor) => void;
     type: ItemType;
@@ -63,28 +123,22 @@ export const ItemSizePick = ({
                                     : 'var(--txt-black)',
                         }}
                     >
-                        <ItemWithImage
-                            itemSrc={ItemsMapping[type][color].src}
-                            imageSrc={getImageLink(prediction.id)}
-                            type={type}
-                        />
+                        {prediction && (
+                            <ItemWithImage
+                                itemSrc={ItemsMapping[type][color].src}
+                                imageSrc={getImageLink(prediction.id)}
+                                type={type}
+                            />
+                        )}
                     </motion.div>
-                    <div className={styles.accordeons}>
-                        <Accordeon title="Как ухажвивать за вещью">
-                            123
-                        </Accordeon>
-                        <Accordeon title="Как ухажвивать за вещью">
-                            123
-                        </Accordeon>
-                        <Accordeon title="Как ухажвивать за вещью">
-                            123
-                        </Accordeon>
+                    <div className={styles.accordions}>
+                        {AccordionsMapping[type]}
                     </div>
                 </div>
 
                 <div>
                     <div className={styles.headText}>
-                        {prediction.sourcePrompt}
+                        {prediction?.sourcePrompt}
                     </div>
                     <ColorPicker
                         color={color}

@@ -5,7 +5,7 @@
 
 .generating {
     color: var(--txt-black, rgba(0, 0, 0, 0.90));
-    font-family: Montserrat;
+    font-family: var(--font-montserrat);
     font-size: 32px;
     font-style: normal;
     font-weight: 600;

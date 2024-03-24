@@ -6,6 +6,7 @@ import Link from 'next/link';
 import logoIcon from '../../../public/icons/logo.svg';
 import { Button, ButtonTheme } from '../Button/Button';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { CartCount } from '../../widgets/CartCount/CartCount';
 
 export const Header = () => {
     return (
@@ -29,12 +30,21 @@ export const Header = () => {
                         Контакты
                     </Link>
                 </div>
-                <Button
-                    left={<ShoppingCartOutlined style={{ fontSize: '24px' }} />}
-                    theme={ButtonTheme.WhiteBackground}
-                >
-                    Корзина
-                </Button>
+                <Link href="/cart">
+                    <Button
+                        left={
+                            <div className={styles.cart}>
+                                <ShoppingCartOutlined
+                                    style={{ fontSize: '24px' }}
+                                />
+                                <CartCount />
+                            </div>
+                        }
+                        theme={ButtonTheme.WhiteBackground}
+                    >
+                        Корзина
+                    </Button>
+                </Link>
             </nav>
         </header>
     );

@@ -6,7 +6,7 @@ export default function Contacts() {
             <BackgroundFigures />
 
             <div className={styles.contactsText}>
-                По всем вопросам можете обращаться в telegram{' '}
+                Telegram{' '}
                 <a href="https://t.me/printifai"> https://t.me/printifai</a>
             </div>
             <div className={styles.contactsText}>

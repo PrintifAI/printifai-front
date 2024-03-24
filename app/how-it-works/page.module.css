@@ -1,4 +1,52 @@
-.inDevText {
-    font-size: 30px;
-    margin-top: 50px;
+.wrapper {
+    background-color: #fff;
 }
+
+.headText {
+    color: var(--txt-black, rgba(0, 0, 0, 0.90));
+    text-align: center;
+    font-family: var(--font-montserrat);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    margin-top: 100px;
+    margin-bottom: 48px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 200px;
+}
+
+.image {
+    margin-bottom: 20px;
+    width: 349px;
+    height: 236px;
+}
+
+.card {
+    padding-right: 20px;
+}
+
+.cardHead {
+    color: var(--txt-black, rgba(0, 0, 0, 0.90));
+    font-family: var(--font-montserrat);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 12px;
+}
+
+.cardBody {
+    color: var(--dark-grey, #666565);
+    font-family: var(--font-montserrat);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+

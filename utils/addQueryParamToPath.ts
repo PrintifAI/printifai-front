@@ -5,7 +5,7 @@ export const addQueryParamToPath = ({
 }: {
     pathname: string;
     query: URLSearchParams;
-    params: Record<string, string>;
+    params: Record<string, any>;
 }): string => {
     const newQuery = new URLSearchParams(query);
 

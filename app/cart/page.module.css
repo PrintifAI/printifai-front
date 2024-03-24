@@ -1,18 +1,11 @@
-.wrapper {
-    background-color: #fff;
-}
-
 .headText {
+    margin-top: 48px;
+    margin-bottom: 28px;
     color: var(--txt-black, rgba(0, 0, 0, 0.90));
     font-family: var(--font-montserrat);
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
-    line-height: 145%;
-    margin-bottom: 20px;
-    margin-top: 100px;
-}
-
-.accordions {
-    width: 720px;
+    line-height: 130%;
+    text-align: center;
 }

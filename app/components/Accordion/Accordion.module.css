@@ -1,0 +1,19 @@
+.accordeon {
+    width: 100%;
+    overflow: hidden;
+    font-family: var(--font-montserrat);
+}
+
+
+.flex {
+    padding: 20px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    color: var(--txt-black, rgba(0, 0, 0, 0.90));
+    font-family: var(--font-montserrat);
+    font-size: 16px;
+    font-weight: 500;
+}

@@ -33,6 +33,7 @@ type Params = {
 type SearchParams = {
     color?: ItemColor;
     type?: ItemType;
+    secondPage?: boolean;
 };
 
 export default function Prediction({
@@ -45,8 +46,9 @@ export default function Prediction({
     const id = params.id;
     const typeParam = searchParams.type;
     const colorParam = searchParams.color;
+    const secondPageParam = searchParams.secondPage;
 
-    const [secondPage, setSecondPage] = useState(false);
+    const [secondPage, setSecondPage] = useState(secondPageParam || false);
     const [color, setColor] = useState(colorParam || TshirtColor.White);
     const [type, setType] = useState(typeParam || ItemType.Tshirt);
 
@@ -84,16 +86,17 @@ export default function Prediction({
             params: {
                 color,
                 type: type,
+                secondPage: secondPage,
             },
         });
 
         router.replace(url);
-    }, [color, type, query, pathname, router]);
+    }, [color, type, secondPage, query, pathname, router]);
 
     if (secondPage && color && type) {
         return (
             <ItemSizePick
-                prediction={prediction!}
+                prediction={prediction}
                 color={color}
                 setColor={setColor}
                 type={type}

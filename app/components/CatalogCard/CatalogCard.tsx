@@ -38,11 +38,19 @@ export const CatalogCard = ({ item, predictionId }: Props) => {
                         : 'var(--txt-black)',
             }}
         >
-            <ItemWithImage
-                imageSrc={getImageLink(predictionId)}
-                itemSrc={ItemsMapping[item.type][color].src}
-                type={item.type}
-            />
+            <Link
+                href={getCardLink(predictionId, {
+                    ...item,
+                    color,
+                })}
+                className={styles.cardLink}
+            >
+                <ItemWithImage
+                    imageSrc={getImageLink(predictionId)}
+                    itemSrc={ItemsMapping[item.type][color].src}
+                    type={item.type}
+                />
+            </Link>
             <div className={styles.onHoverBlock}>
                 <ColorPicker
                     setColor={setColor}

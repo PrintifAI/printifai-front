@@ -4,7 +4,8 @@ import Image from 'next/image';
 
 import { MotionValue, motion, useScroll, useTransform } from 'framer-motion';
 import clsx from 'clsx';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 import styles from './BackgroundFigures.module.css';
 
@@ -16,13 +17,16 @@ import fig5 from '../../../public/figures/fig5.svg';
 import fig6 from '../../../public/figures/fig6.svg';
 import fig7 from '../../../public/figures/fig7.svg';
 import fig8 from '../../../public/figures/fig8.svg';
-import { usePathname } from 'next/navigation';
 
 function useParallax(value: MotionValue<number>, distance: number) {
     return useTransform(value, [0, 1], [0, distance]);
 }
 
-export const BackgroundFigures = () => {
+type Props = {
+    align?: 'center' | 'right';
+};
+
+export const BackgroundFigures = ({ align = 'center' }: Props) => {
     const { scrollYProgress } = useScroll();
     const pathname = usePathname();
 

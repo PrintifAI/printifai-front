@@ -1,5 +1,6 @@
 .wrapper {
     width: 850px;
+    padding-bottom: 30px;
 }
 
 .itemWithImage{
@@ -44,3 +45,6 @@
     margin-top: 32px;
 }
 
+.accordions {
+    margin-top: 48px;
+}

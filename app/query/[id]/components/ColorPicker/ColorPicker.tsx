@@ -5,12 +5,15 @@ import { ItemsMapping, ItemTheme } from '../../../../../constants/itemMapping';
 import styles from './ColorPicker.module.css';
 import { ItemType } from '../../../../../types/itemTypes';
 
+type CommonProps = {
+    align?: 'flex-start' | 'center';
+};
+
 type Props = {
     color: ItemColor;
     onChange: (color: ItemColor) => void;
     itemType: ItemType;
-    align?: 'flex-start' | 'center';
-};
+} & CommonProps;
 
 export const ColorPicker = ({
     color,

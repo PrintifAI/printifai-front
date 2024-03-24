@@ -50,7 +50,6 @@ export const Magnifier = ({
                     // move element center to cursor pos
                     top: `${y - magnifierHeight / 2}px`,
                     left: `${x - magnifierWidth / 2}px`,
-                    opacity: '1', // reduce opacity so you can verify position
                     border: '1px solid lightgray', // show the border of magnifier
                     zIndex: 150,
                     overflow: 'hidden',
@@ -59,7 +58,7 @@ export const Magnifier = ({
             >
                 <div
                     style={{
-                        transform: `scale(2)`,
+                        transform: `scale(${zoomLevel})`,
                         position: 'relative',
                         top: `${-y * zoomLevel + magnifierHeight}px`,
                         left: `${-x * zoomLevel + magnifierWidth}px`,

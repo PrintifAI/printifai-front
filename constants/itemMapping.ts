@@ -10,35 +10,37 @@ export enum ItemTheme {
     Light = 'light',
 }
 
+type ItemImageData = { src: StaticImageData; theme: ItemTheme };
+
 export const ItemsMapping: Record<
     ItemType,
-    Record<ItemColor, { src: StaticImageData; theme: ItemTheme }>
+    Record<ItemColor, ItemImageData>
 > = {
     [ItemType.Tshirt]: {
         [TshirtColor.White]: { src: item1, theme: ItemTheme.Light },
         [TshirtColor.Black]: { src: item2, theme: ItemTheme.Dark },
-        [TshirtColor.Red]: { src: item1, theme: ItemTheme.Light },
-        [TshirtColor.LightBlue]: { src: item1, theme: ItemTheme.Light },
-        [TshirtColor.Blue]: { src: item1, theme: ItemTheme.Dark },
-        [TshirtColor.Pink]: { src: item1, theme: ItemTheme.Light },
-        [TshirtColor.Purple]: { src: item1, theme: ItemTheme.Light },
+        // [TshirtColor.Red]: { src: item1, theme: ItemTheme.Light },
+        // [TshirtColor.LightBlue]: { src: item1, theme: ItemTheme.Light },
+        // [TshirtColor.Blue]: { src: item1, theme: ItemTheme.Dark },
+        // [TshirtColor.Pink]: { src: item1, theme: ItemTheme.Light },
+        // [TshirtColor.Purple]: { src: item1, theme: ItemTheme.Light },
     },
     [ItemType.Shopper]: {
         [ShopperColor.White]: { src: item1, theme: ItemTheme.Light },
         [ShopperColor.Black]: { src: item2, theme: ItemTheme.Dark },
-        [ShopperColor.Red]: { src: item1, theme: ItemTheme.Light },
-        [ShopperColor.LightBlue]: { src: item1, theme: ItemTheme.Light },
-        [ShopperColor.Blue]: { src: item1, theme: ItemTheme.Dark },
-        [ShopperColor.Pink]: { src: item1, theme: ItemTheme.Light },
-        [ShopperColor.Purple]: { src: item1, theme: ItemTheme.Light },
+        // [ShopperColor.Red]: { src: item1, theme: ItemTheme.Light },
+        // [ShopperColor.LightBlue]: { src: item1, theme: ItemTheme.Light },
+        // [ShopperColor.Blue]: { src: item1, theme: ItemTheme.Dark },
+        // [ShopperColor.Pink]: { src: item1, theme: ItemTheme.Light },
+        // [ShopperColor.Purple]: { src: item1, theme: ItemTheme.Light },
     },
     [ItemType.Hoodie]: {
         [HoodieColor.White]: { src: item1, theme: ItemTheme.Light },
         [HoodieColor.Black]: { src: item2, theme: ItemTheme.Dark },
-        [HoodieColor.Red]: { src: item1, theme: ItemTheme.Light },
-        [HoodieColor.LightBlue]: { src: item1, theme: ItemTheme.Light },
-        [HoodieColor.Blue]: { src: item1, theme: ItemTheme.Dark },
-        [HoodieColor.Pink]: { src: item1, theme: ItemTheme.Light },
-        [HoodieColor.Purple]: { src: item1, theme: ItemTheme.Light },
+        // [HoodieColor.Red]: { src: item1, theme: ItemTheme.Light },
+        // [HoodieColor.LightBlue]: { src: item1, theme: ItemTheme.Light },
+        // [HoodieColor.Blue]: { src: item1, theme: ItemTheme.Dark },
+        // [HoodieColor.Pink]: { src: item1, theme: ItemTheme.Light },
+        // [HoodieColor.Purple]: { src: item1, theme: ItemTheme.Light },
     },
 };

@@ -8,13 +8,13 @@ export const Footer = () => {
             <div className={styles.footerContent}>
                 <div>@Copyright PrintifAI 2024. Все права зарезервированы.</div>
                 <div className={styles.icons}>
-                    <a href="youtube.com" className={styles.icon}>
+                    <a href="https://youtube.com" className={styles.icon}>
                         <YoutubeOutlined />
                     </a>
-                    <a href="instagram.com" className={styles.icon}>
+                    <a href="https://instagram.com" className={styles.icon}>
                         <InstagramOutlined />
                     </a>
-                    <a href="telegram.com" className={styles.icon}>
+                    <a href="https://t.me/printifai" className={styles.icon}>
                         <TelegramIcon />
                     </a>
                 </div>
