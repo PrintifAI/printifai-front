@@ -1,0 +1,29 @@
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.itemCard {
+    width: 244px;
+    height: 275px;
+}
+
+.historyHeadText {
+    font-family: var(--font-montserrat);
+    font-size: 25px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.9);
+    margin-bottom: 40px;
+}
+
+.history {
+    margin-top: 20px;
+    margin-bottom: 112px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,29 +1,29 @@
-import { motion } from 'framer-motion';
 import { ItemColor } from '../../../../../constants/ItemColor';
-import { ItemTheme, ItemsMapping } from '../../../../../constants/itemMapping';
 import { Price } from '../../../../../constants/prices';
 import { ItemType } from '../../../../../types/itemTypes';
 import { PredictionResponse } from '../../../../../types/predictionTypes';
-import { getImageLink } from '../../../../../utils/getImageLink';
 import { Accordion } from '../../../../components/Accordion/Accordion';
 import { Button, ButtonSize } from '../../../../components/Button/Button';
-import { ItemWithImage } from '../../../../components/ItemWithImage/ItemWithImage';
 import { BackButtonWithEvent } from '../../components/BackButtonWithEvent/BackButtonWithEvent';
 import { ColorPicker } from '../../components/ColorPicker/ColorPicker';
-import styles from './ItemSizePick.module.css';
 import { numberWithSpaces } from '../../../../../utils/numbersWithSpaces';
-import Select from 'react-select';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { InputNumber } from '../../../../components/InputNumber/InputNumber';
+import { ItemCard } from '../../../../components/ItemCard/ItemCard';
+import { ItemSize } from '../../../../../constants/ItemSize';
+import { Select } from 'antd';
+import { CartContext } from '../../../../../providers/CartProvider';
+
+import styles from './ItemSizePick.module.css';
 
 const options = [
-    { value: 'xxs', label: 'XXS' },
-    { value: 'xs', label: 'XS' },
-    { value: 's', label: 'S' },
-    { value: 'm', label: 'M' },
-    { value: 'l', label: 'L' },
-    { value: 'xl', label: 'XL' },
-    { value: 'xxl', label: 'XXL' },
+    { value: ItemSize.XXS, label: 'XXS' },
+    { value: ItemSize.XS, label: 'XS' },
+    { value: ItemSize.S, label: 'S' },
+    { value: ItemSize.M, label: 'M' },
+    { value: ItemSize.L, label: 'L' },
+    { value: ItemSize.XL, label: 'XL' },
+    { value: ItemSize.XXL, label: 'XXL' },
 ];
 
 const AccordionsMapping = {
@@ -89,6 +89,7 @@ const AccordionsMapping = {
 type Props = {
     prediction?: PredictionResponse;
     color: ItemColor;
+    removedBackground: boolean;
     setColor: (color: ItemColor) => void;
     type: ItemType;
     setSecondPage: (value: boolean) => void;
@@ -100,37 +101,60 @@ export const ItemSizePick = ({
     setColor,
     type,
     setSecondPage,
+    removedBackground,
 }: Props) => {
-    const [size, setSize] = useState<{ value: string; label: string } | null>({
-        value: 'xs',
+    const cartContext = useContext(CartContext);
+
+    const [size, setSize] = useState<{ value: ItemSize; label: string }>({
+        value: ItemSize.XS,
         label: 'XS',
     });
 
     const [itemCount, setItemCount] = useState(1);
+
+    const handleAddToCart = () => {
+        if (!prediction?.id) {
+            return;
+        }
+
+        const cart = [...cartContext.cart];
+
+        const i = cart.findIndex(
+            (cartItem) => cartItem.design.predictionId === prediction.id,
+        );
+
+        if (i === -1) {
+            cart.push({
+                design: {
+                    color,
+                    type,
+                    removedBackground,
+                    predictionId: prediction.id,
+                },
+                size: size.value as ItemSize,
+                count: itemCount,
+            });
+        } else {
+            cart[i].count += itemCount;
+        }
+
+        cartContext.setCart(cart);
+    };
 
     return (
         <div className={styles.wrapper}>
             <BackButtonWithEvent onClick={() => setSecondPage(false)} />
             <div className={styles.gridWrapper}>
                 <div>
-                    <motion.div
-                        className={styles.itemWithImage}
-                        animate={{
-                            backgroundColor:
-                                ItemsMapping[type][color].theme ===
-                                ItemTheme.Dark
-                                    ? 'var(--grey-white, #EEE)'
-                                    : 'var(--txt-black)',
-                        }}
-                    >
-                        {prediction && (
-                            <ItemWithImage
-                                itemSrc={ItemsMapping[type][color].src}
-                                imageSrc={getImageLink(prediction.id)}
-                                type={type}
-                            />
-                        )}
-                    </motion.div>
+                    <div className={styles.itemCard}>
+                        <ItemCard
+                            type={type}
+                            color={color}
+                            removedBackground={removedBackground}
+                            predictionId={prediction?.id!}
+                            loading={!prediction}
+                        />
+                    </div>
                     <div className={styles.accordions}>
                         {AccordionsMapping[type]}
                     </div>
@@ -151,15 +175,14 @@ export const ItemSizePick = ({
                         <Select
                             options={options}
                             id="size-select"
-                            styles={{
-                                control: (base) => ({
-                                    ...base,
-                                    border: 'none',
-                                    borderRadius: 0,
-                                    borderBottom:
-                                        '1px solid var(--pink, #FF83C6)',
-                                    boxShadow: 'none',
-                                }),
+                            variant="borderless"
+                            size="large"
+                            style={{
+                                border: 'none',
+                                borderRadius: 0,
+                                borderBottom: '1px solid var(--pink, #FF83C6)',
+                                boxShadow: 'none',
+                                width: '100%',
                             }}
                             value={size}
                             onChange={(value) => setSize(value!)}
@@ -173,7 +196,10 @@ export const ItemSizePick = ({
                             value={itemCount}
                             onChange={setItemCount}
                         />
-                        <Button size={ButtonSize.Large}>
+                        <Button
+                            size={ButtonSize.Large}
+                            onClick={handleAddToCart}
+                        >
                             Добавить в корзину
                         </Button>
                     </div>

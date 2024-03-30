@@ -3,17 +3,9 @@
     padding-bottom: 30px;
 }
 
-.itemWithImage{
+.itemCard{
     width: 403px;
     height: 415px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-    background: 10px 35% url("/figures/fig9.svg") no-repeat,
-    calc(100% - 10px) 6% url("/figures/fig10.svg") no-repeat, var(--txt-black);
 }
 
 .gridWrapper {
@@ -47,4 +39,5 @@
 
 .accordions {
     margin-top: 48px;
+    width: 403px;
 }

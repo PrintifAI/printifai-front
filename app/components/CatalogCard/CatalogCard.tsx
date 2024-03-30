@@ -1,7 +1,6 @@
 'use client';
 
 import styles from './CatalogCard.module.css';
-import { ItemWithImage } from '../ItemWithImage/ItemWithImage';
 
 import { useState } from 'react';
 import { ItemColor } from '../../../constants/ItemColor';
@@ -10,45 +9,37 @@ import { Button, ButtonSize, ButtonTheme } from '../Button/Button';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { ColorPicker } from '../ColorPickerMini/ColorPickerMini';
 
-import { motion } from 'framer-motion';
-import { getImageLink } from '../../../utils/getImageLink';
 import { getCardLink } from '../../../utils/getCardLink';
 import Link from 'next/link';
-import { Item } from '../../../types/itemTypes';
 import { Price } from '../../../constants/prices';
-import { ItemTheme, ItemsMapping } from '../../../constants/itemMapping';
+import { ItemsMapping } from '../../../constants/itemMapping';
+import { ItemCard } from '../ItemCard/ItemCard';
+import { Design } from '../../../types/designTypes';
 
 type Props = {
-    item: Item;
-    predictionId: string;
+    design: Design;
 };
 
-export const CatalogCard = ({ item, predictionId }: Props) => {
-    const [color, setColor] = useState<ItemColor>(item.color);
+export const CatalogCard = ({ design }: Props) => {
+    const [color, setColor] = useState<ItemColor>(design.color);
 
-    const colors = Object.keys(ItemsMapping[item.type]) as ItemColor[];
+    const colors = Object.keys(ItemsMapping[design.type]) as ItemColor[];
+
+    const link = getCardLink({
+        color,
+        predictionId: design.predictionId,
+        type: design.type,
+        removedBackground: design.removedBackground,
+    });
 
     return (
-        <motion.div
-            className={styles.container}
-            animate={{
-                backgroundColor:
-                    ItemsMapping[item.type][color].theme === ItemTheme.Dark
-                        ? 'var(--grey-white, #EEE)'
-                        : 'var(--txt-black)',
-            }}
-        >
-            <Link
-                href={getCardLink(predictionId, {
-                    ...item,
-                    color,
-                })}
-                className={styles.cardLink}
-            >
-                <ItemWithImage
-                    imageSrc={getImageLink(predictionId)}
-                    itemSrc={ItemsMapping[item.type][color].src}
-                    type={item.type}
+        <div className={styles.container}>
+            <Link href={link} className={styles.cardLink}>
+                <ItemCard
+                    type={design.type}
+                    color={color}
+                    removedBackground={false}
+                    predictionId={design.predictionId}
                 />
             </Link>
             <div className={styles.onHoverBlock}>
@@ -57,13 +48,8 @@ export const CatalogCard = ({ item, predictionId }: Props) => {
                     color={color}
                     colors={colors}
                 />
-                <div className={styles.price}>{Price[item.type]} ₽</div>
-                <Link
-                    href={getCardLink(predictionId, {
-                        ...item,
-                        color,
-                    })}
-                >
+                <div className={styles.price}>{Price[design.type]} ₽</div>
+                <Link href={link}>
                     <Button
                         theme={ButtonTheme.WhiteBackground}
                         size={ButtonSize.Small}
@@ -72,6 +58,6 @@ export const CatalogCard = ({ item, predictionId }: Props) => {
                     </Button>
                 </Link>
             </div>
-        </motion.div>
+        </div>
     );
 };

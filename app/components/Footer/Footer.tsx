@@ -11,9 +11,9 @@ export const Footer = () => {
                     <a href="https://youtube.com" className={styles.icon}>
                         <YoutubeOutlined />
                     </a>
-                    <a href="https://instagram.com" className={styles.icon}>
+                    {/* <a href="https://instagram.com" className={styles.icon}>
                         <InstagramOutlined />
-                    </a>
+                    </a> */}
                     <a href="https://t.me/printifai" className={styles.icon}>
                         <TelegramIcon />
                     </a>

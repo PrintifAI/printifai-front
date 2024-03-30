@@ -9,10 +9,11 @@ import { Config } from '../../../config/config';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { PredictionResponse } from '../../../types/predictionTypes';
-import { useFingerprint } from '../../../hooks/useFingerprint';
 import { getCardLink } from '../../../utils/getCardLink';
 import { ItemType } from '../../../types/itemTypes';
 import { TshirtColor } from '../../../constants/ItemColor';
+import { useQuery } from '@tanstack/react-query';
+import { RemainResponse } from '../../../types/remain';
 
 const MAX_REQUESTS_NUMBERS = 10;
 
@@ -25,11 +26,20 @@ export const Prompter = ({ value = '', withRemain = false }: Props) => {
     const [prompt, setPrompt] = useState(value || '');
     const [error, setError] = useState('');
 
+    const { data: remaining, refetch } = useQuery({
+        queryKey: ['remaining'],
+        queryFn: () =>
+            axios
+                .get<RemainResponse>(`${Config.BACK_HOST}/remaining`, {
+                    params: {},
+                })
+                .then((res) => res.data),
+        enabled: withRemain,
+    });
+
     useEffect(() => {
         setPrompt(value);
     }, [value]);
-
-    const fingerprintState = useFingerprint();
 
     const router = useRouter();
     const handleSubmit: FormEventHandler = (e) => {
@@ -39,17 +49,18 @@ export const Prompter = ({ value = '', withRemain = false }: Props) => {
             .post<PredictionResponse>(`${Config.BACK_HOST}/query`, undefined, {
                 params: {
                     prompt,
-                    fingerprint: fingerprintState.value,
                 },
             })
             .then((response) => {
+                refetch();
                 const id = response.data.id;
-                router.push(
-                    getCardLink(id, {
-                        type: ItemType.Tshirt,
-                        color: TshirtColor.White,
-                    }),
-                );
+                const link = getCardLink({
+                    predictionId: id,
+                    removedBackground: false,
+                    type: ItemType.Tshirt,
+                    color: TshirtColor.White,
+                });
+                router.push(link, { scroll: false });
             })
             .catch((response: AxiosError) => {
                 setError(response.response?.data as string);
@@ -81,7 +92,6 @@ export const Prompter = ({ value = '', withRemain = false }: Props) => {
                     }
                     className={styles.sendButton}
                     type="submit"
-                    disabled={fingerprintState.loading}
                 >
                     Вжух
                 </Button>
@@ -89,7 +99,7 @@ export const Prompter = ({ value = '', withRemain = false }: Props) => {
             {error}
             {withRemain && (
                 <div className={styles.remain}>
-                    Осталось генераций: 10 из {MAX_REQUESTS_NUMBERS}
+                    Осталось генераций: {remaining} из {MAX_REQUESTS_NUMBERS}
                 </div>
             )}
         </form>

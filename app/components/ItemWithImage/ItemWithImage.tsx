@@ -42,6 +42,7 @@ export const ItemWithImage = ({ imageSrc, itemSrc, loading }: Props) => {
                             height: '44%',
                             transform: 'translate(-50%, -65%)',
                         }}
+                        draggable="false"
                     />
                 )}
                 {loading && <Loader />}
@@ -51,6 +52,7 @@ export const ItemWithImage = ({ imageSrc, itemSrc, loading }: Props) => {
                     alt="Изображение футболки"
                     className={styles.itemImage}
                     priority={true}
+                    draggable="false"
                 />
             </motion.div>
         </AnimatePresence>

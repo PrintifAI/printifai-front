@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 import styles from './Button.module.css';
 import clsx from 'clsx';
-import { Loader } from '../Loader/Loader';
 
 export const enum ButtonTheme {
     WhiteBackground = 'white',
@@ -44,6 +43,7 @@ export const Button = ({
         <button
             id={id}
             className={clsx(
+                styles.button,
                 theme === ButtonTheme.WhiteBackground
                     ? styles.buttonWhite
                     : styles.buttonBlack,
@@ -52,14 +52,13 @@ export const Button = ({
                     : size === ButtonSize.Medium
                       ? styles.buttonMedium
                       : styles.buttonLarge,
-                styles.button,
+                loading ? styles.loading : undefined,
                 className,
             )}
             onClick={onClick}
             type={type}
-            disabled={disabled}
+            disabled={disabled || loading}
         >
-            {loading && <Loader />}
             {left} {children}
         </button>
     );

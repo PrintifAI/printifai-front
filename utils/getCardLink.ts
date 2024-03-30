@@ -1,9 +1,21 @@
-import { Item } from '../types/itemTypes';
+import { Design } from '../types/designTypes';
 
-export const getCardLink = (predictionId: string, item: Item) => {
-    const query = new URLSearchParams({
-        ...item,
-    });
+export const getCardLink = ({
+    predictionId,
+    color,
+    type,
+    removedBackground,
+}: Design) => {
+    let query: any = {
+        color,
+        type,
+    };
 
-    return `/query/${predictionId}?${query.toString()}`;
+    if (removedBackground) {
+        query.rmbg = 'true';
+    }
+
+    const queryString = new URLSearchParams(query).toString();
+
+    return `/query/${predictionId}?${queryString}`;
 };

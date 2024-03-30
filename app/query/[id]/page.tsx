@@ -23,6 +23,10 @@ import { ItemSizePick } from './widgets/ItemSizePick/ItemSizePick';
 import { useSearchParams, usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { addQueryParamToPath } from '../../../utils/addQueryParamToPath';
+import { getLocalStorage, setLocalStorage } from '../../../utils/localStorage';
+import { LOCAL_STORAGE_HISTORY_KEY } from '../../../constants/LocalStorageKeys';
+import { Design } from '../../../types/designTypes';
+import { History } from './widgets/History/History';
 
 const CHECK_INTERVAL = 1000;
 
@@ -34,6 +38,7 @@ type SearchParams = {
     color?: ItemColor;
     type?: ItemType;
     secondPage?: boolean;
+    rmbg?: boolean;
 };
 
 export default function Prediction({
@@ -47,10 +52,14 @@ export default function Prediction({
     const typeParam = searchParams.type;
     const colorParam = searchParams.color;
     const secondPageParam = searchParams.secondPage;
+    const removedBackgroundParam = !!searchParams.rmbg;
 
     const [secondPage, setSecondPage] = useState(secondPageParam || false);
     const [color, setColor] = useState(colorParam || TshirtColor.White);
     const [type, setType] = useState(typeParam || ItemType.Tshirt);
+    const [removedBackground, setRemovedBackground] = useState<boolean>(
+        removedBackgroundParam || false,
+    );
 
     const { data: prediction, refetch } = useQuery({
         queryKey: ['prediction', id],
@@ -63,9 +72,22 @@ export default function Prediction({
         enabled: !!id,
     });
 
+    const loadingRemoveBackground =
+        prediction?.removedBackground.some((item) => {
+            return item.status === PredictionStatus.Created;
+        }) || false;
+
+    const readyRemoveBackground =
+        prediction?.removedBackground.some((item) => {
+            return item.status === PredictionStatus.Ready;
+        }) || false;
+
     useEffect(() => {
         const interval = setInterval(() => {
-            if (prediction?.status === PredictionStatus.Created) {
+            if (
+                prediction?.status === PredictionStatus.Created ||
+                loadingRemoveBackground
+            ) {
                 refetch();
             }
         }, CHECK_INTERVAL);
@@ -73,11 +95,44 @@ export default function Prediction({
         return () => {
             clearInterval(interval);
         };
-    }, [refetch, prediction]);
+    }, [refetch, prediction, loadingRemoveBackground, removedBackground]);
 
     const router = useRouter();
     const query = useSearchParams();
     const pathname = usePathname();
+
+    useEffect(() => {
+        if (!prediction?.id) {
+            return;
+        }
+
+        const el: Design = {
+            color,
+            type: type,
+            removedBackground: readyRemoveBackground && removedBackground,
+            predictionId: prediction.id,
+            time: Date.now(),
+        };
+
+        let history = getLocalStorage<Design[]>(LOCAL_STORAGE_HISTORY_KEY);
+
+        if (!history) {
+            history = [];
+        }
+
+        const i = history.findIndex(
+            (val) => val.predictionId === el.predictionId,
+        );
+
+        if (i === -1) {
+            history.push(el);
+        } else {
+            history[i] = el;
+        }
+
+        history = history.sort((a, b) => b.time! - a.time!).slice(0, 15);
+        setLocalStorage(LOCAL_STORAGE_HISTORY_KEY, history);
+    }, [color, prediction?.id, type, removedBackground, readyRemoveBackground]);
 
     useEffect(() => {
         const url = addQueryParamToPath({
@@ -87,15 +142,17 @@ export default function Prediction({
                 color,
                 type: type,
                 secondPage: secondPage,
+                rmbg: removedBackground,
             },
         });
 
-        router.replace(url);
-    }, [color, type, secondPage, query, pathname, router]);
+        router.replace(url, { scroll: false });
+    }, [color, type, secondPage, query, pathname, router, removedBackground]);
 
     if (secondPage && color && type) {
         return (
             <ItemSizePick
+                removedBackground={readyRemoveBackground && removedBackground}
                 prediction={prediction}
                 color={color}
                 setColor={setColor}
@@ -109,14 +166,11 @@ export default function Prediction({
         <div className={styles.wrapper}>
             <BackButton />
             <div className={styles.prompterContainer}>
-                <Prompter value={prediction?.sourcePrompt} />
-                {/* <Prompter initial={prediction?.sourcePrompt} withRemain /> */}
+                <Prompter value={prediction?.sourcePrompt} withRemain />
             </div>
 
-            {!prediction ||
-                (prediction.status === PredictionStatus.Created && (
-                    <ItemStub />
-                ))}
+            {(!prediction ||
+                prediction.status === PredictionStatus.Created) && <ItemStub />}
 
             {prediction?.status === PredictionStatus.Failed && (
                 <FailedPrediction />
@@ -124,6 +178,13 @@ export default function Prediction({
 
             {prediction?.status === PredictionStatus.Ready && (
                 <ItemPicker
+                    removedBackground={
+                        readyRemoveBackground && removedBackground
+                    }
+                    setRemovedBackground={(value) => {
+                        refetch();
+                        setRemovedBackground(value);
+                    }}
                     prediction={prediction}
                     type={type || ItemType.Tshirt}
                     color={color}
@@ -132,6 +193,8 @@ export default function Prediction({
                     onNext={() => setSecondPage(true)}
                 />
             )}
+
+            <History />
         </div>
     );
 }
