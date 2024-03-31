@@ -3,8 +3,9 @@
 import { useContext } from 'react';
 import styles from './CartCount.module.css';
 import { CartContext } from '../../../providers/CartProvider';
+import dynamic from 'next/dynamic';
 
-export const CartCount = () => {
+export const CartCountComponent = () => {
     const { cart } = useContext(CartContext);
 
     return (
@@ -15,3 +16,7 @@ export const CartCount = () => {
         </>
     );
 };
+
+export const CartCount = dynamic(() => Promise.resolve(CartCountComponent), {
+    ssr: false,
+});

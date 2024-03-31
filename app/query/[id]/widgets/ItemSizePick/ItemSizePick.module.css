@@ -1,11 +1,11 @@
 .wrapper {
-    width: 850px;
+    width: 1008px;
     padding-bottom: 30px;
 }
 
 .itemCard{
-    width: 403px;
-    height: 415px;
+    width: 500px;
+    height: 484px;
 }
 
 .gridWrapper {
@@ -39,5 +39,10 @@
 
 .accordions {
     margin-top: 48px;
-    width: 403px;
+    width: 500px;
+}
+
+.accordionTable {
+    width: 100%;
+    text-align: center;
 }

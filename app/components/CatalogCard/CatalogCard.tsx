@@ -27,7 +27,7 @@ export const CatalogCard = ({ design }: Props) => {
 
     const link = getCardLink({
         color,
-        predictionId: design.predictionId,
+        prediction: design.prediction,
         type: design.type,
         removedBackground: design.removedBackground,
     });
@@ -39,7 +39,7 @@ export const CatalogCard = ({ design }: Props) => {
                     type={design.type}
                     color={color}
                     removedBackground={false}
-                    predictionId={design.predictionId}
+                    predictionId={design.prediction.id}
                 />
             </Link>
             <div className={styles.onHoverBlock}>

@@ -1,0 +1,43 @@
+.card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid grey;
+}
+
+.itemImage {
+    width: 100px;
+    height: 100px;
+}
+
+.imageBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.price {
+    font-size: 24px;
+}
+
+.lowerDescription {
+    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    color: #666565
+}
+
+.prompt {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.descriptionBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 319px;
+}

@@ -53,9 +53,8 @@ export const Prompter = ({ value = '', withRemain = false }: Props) => {
             })
             .then((response) => {
                 refetch();
-                const id = response.data.id;
                 const link = getCardLink({
-                    predictionId: id,
+                    prediction: response.data,
                     removedBackground: false,
                     type: ItemType.Tshirt,
                     color: TshirtColor.White,
@@ -99,7 +98,8 @@ export const Prompter = ({ value = '', withRemain = false }: Props) => {
             {error}
             {withRemain && (
                 <div className={styles.remain}>
-                    Осталось генераций: {remaining} из {MAX_REQUESTS_NUMBERS}
+                    Осталось генераций: {remaining || MAX_REQUESTS_NUMBERS} из{' '}
+                    {MAX_REQUESTS_NUMBERS}
                 </div>
             )}
         </form>

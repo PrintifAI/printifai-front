@@ -3,7 +3,11 @@ import { Price } from '../../../../../constants/prices';
 import { ItemType } from '../../../../../types/itemTypes';
 import { PredictionResponse } from '../../../../../types/predictionTypes';
 import { Accordion } from '../../../../components/Accordion/Accordion';
-import { Button, ButtonSize } from '../../../../components/Button/Button';
+import {
+    Button,
+    ButtonSize,
+    ButtonTheme,
+} from '../../../../components/Button/Button';
 import { BackButtonWithEvent } from '../../components/BackButtonWithEvent/BackButtonWithEvent';
 import { ColorPicker } from '../../components/ColorPicker/ColorPicker';
 import { numberWithSpaces } from '../../../../../utils/numbersWithSpaces';
@@ -15,6 +19,9 @@ import { Select } from 'antd';
 import { CartContext } from '../../../../../providers/CartProvider';
 
 import styles from './ItemSizePick.module.css';
+import Link from 'next/link';
+import nanoEqual from 'nano-equal';
+import { Design, equalDesign } from '../../../../../types/designTypes';
 
 const options = [
     { value: ItemSize.XXS, label: 'XXS' },
@@ -41,13 +48,43 @@ const AccordionsMapping = {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>XS</td>
+                            <td>XXS</td>
                             <td>80-84 см</td>
                             <td>80-84 см</td>
                             <td>60 см</td>
                         </tr>
                         <tr>
                             <td>XS</td>
+                            <td>80-84 см</td>
+                            <td>80-84 см</td>
+                            <td>60 см</td>
+                        </tr>
+                        <tr>
+                            <td>S</td>
+                            <td>80-84 см</td>
+                            <td>80-84 см</td>
+                            <td>60 см</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>80-84 см</td>
+                            <td>80-84 см</td>
+                            <td>60 см</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>80-84 см</td>
+                            <td>80-84 см</td>
+                            <td>60 см</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>80-84 см</td>
+                            <td>80-84 см</td>
+                            <td>60 см</td>
+                        </tr>
+                        <tr>
+                            <td>XXL</td>
                             <td>80-84 см</td>
                             <td>80-84 см</td>
                             <td>60 см</td>
@@ -105,12 +142,18 @@ export const ItemSizePick = ({
 }: Props) => {
     const cartContext = useContext(CartContext);
 
-    const [size, setSize] = useState<{ value: ItemSize; label: string }>({
-        value: ItemSize.XS,
-        label: 'XS',
-    });
+    const [size, setSize] = useState<ItemSize>(ItemSize.XS);
 
     const [itemCount, setItemCount] = useState(1);
+
+    const design: Design | null = prediction
+        ? {
+              prediction: prediction,
+              color,
+              type,
+              removedBackground,
+          }
+        : null;
 
     const handleAddToCart = () => {
         if (!prediction?.id) {
@@ -120,23 +163,19 @@ export const ItemSizePick = ({
         const cart = [...cartContext.cart];
 
         const i = cart.findIndex(
-            (cartItem) => cartItem.design.predictionId === prediction.id,
+            (cartItem) =>
+                equalDesign(cartItem.design, design!) && size === cartItem.size,
         );
 
-        if (i === -1) {
-            cart.push({
-                design: {
-                    color,
-                    type,
-                    removedBackground,
-                    predictionId: prediction.id,
-                },
-                size: size.value as ItemSize,
-                count: itemCount,
-            });
-        } else {
-            cart[i].count += itemCount;
+        if (i !== -1) {
+            return;
         }
+
+        cart.push({
+            design: design!,
+            size,
+            count: itemCount,
+        });
 
         cartContext.setCart(cart);
     };
@@ -196,12 +235,28 @@ export const ItemSizePick = ({
                             value={itemCount}
                             onChange={setItemCount}
                         />
-                        <Button
-                            size={ButtonSize.Large}
-                            onClick={handleAddToCart}
-                        >
-                            Добавить в корзину
-                        </Button>
+                        {cartContext.cart.some(
+                            (cartItem) =>
+                                equalDesign(cartItem.design, design) &&
+                                size === cartItem.size,
+                        ) ? (
+                            <Link href="/cart">
+                                <Button
+                                    size={ButtonSize.Large}
+                                    theme={ButtonTheme.WhiteBackground}
+                                >
+                                    Перейти в корзину
+                                </Button>
+                            </Link>
+                        ) : (
+                            <Button
+                                size={ButtonSize.Large}
+                                onClick={handleAddToCart}
+                                disabled={!design}
+                            >
+                                Добавить в корзину
+                            </Button>
+                        )}
                     </div>
                 </div>
             </div>

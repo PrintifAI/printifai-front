@@ -25,12 +25,12 @@ const HistoryComponent = () => {
                         <Link
                             href={getCardLink(design)}
                             className={styles.itemCard}
-                            key={design.predictionId}
+                            key={design.prediction.id}
                         >
                             <ItemCard
                                 type={design.type}
                                 color={design.color}
-                                predictionId={design.predictionId}
+                                predictionId={design.prediction.id}
                                 removedBackground={design.removedBackground}
                             />
                         </Link>

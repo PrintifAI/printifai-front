@@ -110,7 +110,7 @@ export default function Prediction({
             color,
             type: type,
             removedBackground: readyRemoveBackground && removedBackground,
-            predictionId: prediction.id,
+            prediction: prediction,
             time: Date.now(),
         };
 
@@ -121,7 +121,7 @@ export default function Prediction({
         }
 
         const i = history.findIndex(
-            (val) => val.predictionId === el.predictionId,
+            (val) => val.prediction.id === el.prediction.id,
         );
 
         if (i === -1) {
@@ -132,7 +132,7 @@ export default function Prediction({
 
         history = history.sort((a, b) => b.time! - a.time!).slice(0, 15);
         setLocalStorage(LOCAL_STORAGE_HISTORY_KEY, history);
-    }, [color, prediction?.id, type, removedBackground, readyRemoveBackground]);
+    }, [color, prediction, type, removedBackground, readyRemoveBackground]);
 
     useEffect(() => {
         const url = addQueryParamToPath({

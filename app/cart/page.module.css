@@ -2,10 +2,54 @@
     margin-top: 48px;
     margin-bottom: 28px;
     color: var(--txt-black, rgba(0, 0, 0, 0.90));
-    font-family: var(--font-montserrat);
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
     line-height: 130%;
     text-align: center;
+    width: 100%;
 }
+
+.sumBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 32px;
+    padding: 20px 0;
+}
+
+.wrapper {
+    width: 100%;
+    font-family: var(--font-montserrat);
+
+}
+
+.orderBlock {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sum {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.cartEmpty {
+    font-size: 25px;
+    text-align: center;
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px 0;
+}
+
+.cartEmptyIcon {
+    font-size: 50px;
+}
+
+

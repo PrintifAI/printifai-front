@@ -29,3 +29,8 @@ export enum HoodieColor {
     // LightBlue = '#A0F4E0',
     // Purple = '#230050',
 }
+
+export const ColorMapping = {
+    [TshirtColor.White]: 'Белый',
+    [TshirtColor.Black]: 'Черный',
+};

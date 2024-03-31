@@ -1,7 +1,7 @@
 import { Design } from '../types/designTypes';
 
 export const getCardLink = ({
-    predictionId,
+    prediction,
     color,
     type,
     removedBackground,
@@ -17,5 +17,5 @@ export const getCardLink = ({
 
     const queryString = new URLSearchParams(query).toString();
 
-    return `/query/${predictionId}?${queryString}`;
+    return `/query/${prediction.id}?${queryString}`;
 };
