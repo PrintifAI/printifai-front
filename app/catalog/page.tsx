@@ -6,7 +6,7 @@ import { PredictionResponse } from '../../types/predictionTypes';
 import { CatalogCard } from '../components/CatalogCard/CatalogCard';
 import styles from './page.module.css';
 
-export async function getQueries(): Promise<{
+async function getQueries(): Promise<{
     data: PredictionResponse[];
     count: number;
 }> {

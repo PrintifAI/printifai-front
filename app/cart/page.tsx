@@ -10,9 +10,8 @@ import { CartContext } from '../../providers/CartProvider';
 import dynamic from 'next/dynamic';
 import { Price } from '../../constants/prices';
 import { CartItem, equalCartItems } from '../../types/cartTypes';
-import { equalDesign } from '../../types/designTypes';
-import { nanoid } from 'nanoid';
-import { MedicineBoxOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 
 export default dynamic(
     () =>
@@ -53,38 +52,51 @@ export default dynamic(
 
                     {cart.length === 0 && (
                         <div className={styles.cartEmpty}>
-                            <MedicineBoxOutlined
-                                className={styles.cartEmptyIcon}
-                            />
-                            <div>Пусто</div>
+                            <div className={styles.emptyOpacity}>
+                                <ShoppingCartOutlined
+                                    className={styles.cartEmptyIcon}
+                                />
+                                <div>Вы еще не добавили товары в корзину</div>
+                            </div>
+                            <Link href="/catalog">
+                                <Button size={ButtonSize.Large}>
+                                    В каталог
+                                </Button>
+                            </Link>
                         </div>
                     )}
 
-                    {cart.map((cartItem) => (
-                        <CartCard
-                            key={JSON.stringify({ ...cartItem, count: 0 })}
-                            item={cartItem}
-                            onChange={handleChange}
-                        />
-                    ))}
+                    {cart.length !== 0 && (
+                        <>
+                            {cart.map((cartItem) => (
+                                <CartCard
+                                    key={JSON.stringify({
+                                        ...cartItem,
+                                        count: 0,
+                                    })}
+                                    item={cartItem}
+                                    onChange={handleChange}
+                                />
+                            ))}
 
-                    <div className={styles.sumBlock}>
-                        <div className={styles.sumText}>
-                            Сумма (без учета доставки)
-                        </div>
-                        <div className={styles.sum}>
-                            {numberWithSpaces(sum)} ₽
-                        </div>
-                    </div>
+                            <div className={styles.sumBlock}>
+                                <div className={styles.sumText}>
+                                    Сумма (без учета доставки)
+                                </div>
+                                <div className={styles.sum}>
+                                    {numberWithSpaces(sum)} ₽
+                                </div>
+                            </div>
 
-                    <div className={styles.orderBlock}>
-                        <Button
-                            size={ButtonSize.Large}
-                            disabled={cart.length === 0}
-                        >
-                            Перейти к оформлению
-                        </Button>
-                    </div>
+                            <div className={styles.orderBlock}>
+                                <Link href="/order">
+                                    <Button size={ButtonSize.Large}>
+                                        Перейти к оформлению
+                                    </Button>
+                                </Link>
+                            </div>
+                        </>
+                    )}
                 </div>
             );
         }),

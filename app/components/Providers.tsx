@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { CartContext, CartProvider } from '../../providers/CartProvider';
+import { CartProvider } from '../../providers/CartProvider';
 
 type Props = {
     children: React.ReactNode;

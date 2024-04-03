@@ -44,5 +44,9 @@
 
 .accordionTable {
     width: 100%;
-    text-align: center;
+    text-align: left;
+}
+
+.accordionTable th {
+    font-weight: 500;
 }

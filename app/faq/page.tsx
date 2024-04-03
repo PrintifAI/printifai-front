@@ -18,7 +18,7 @@ export default function Galery() {
                     </Accordion>
                     <Accordion title="Способы доставки">
                         На данный момент доступны 3 способа доставки – Почта
-                        России, СДЭК и PickPoint
+                        России и СДЭК
                     </Accordion>
                     <Accordion title="Как отслеживать заказ?">
                         После оформления заказа на Вашу почту приходит

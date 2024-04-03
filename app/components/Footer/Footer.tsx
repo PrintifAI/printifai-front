@@ -8,9 +8,9 @@ export const Footer = () => {
             <div className={styles.footerContent}>
                 <div>@Copyright PrintifAI 2024. Все права зарезервированы.</div>
                 <div className={styles.icons}>
-                    <a href="https://youtube.com" className={styles.icon}>
+                    {/* <a href="https://youtube.com" className={styles.icon}>
                         <YoutubeOutlined />
-                    </a>
+                    </a> */}
                     {/* <a href="https://instagram.com" className={styles.icon}>
                         <InstagramOutlined />
                     </a> */}

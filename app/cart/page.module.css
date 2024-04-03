@@ -24,6 +24,7 @@
     width: 100%;
     font-family: var(--font-montserrat);
     margin-bottom: 100px;
+    max-width: 1104px;
 }
 
 .orderBlock {
@@ -49,7 +50,16 @@
 }
 
 .cartEmptyIcon {
-    font-size: 50px;
+    font-size: 80px;
 }
 
-
+.emptyOpacity {
+    gap: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: grey;
+    margin-bottom: 32px;
+    margin-top: 68px;
+}
