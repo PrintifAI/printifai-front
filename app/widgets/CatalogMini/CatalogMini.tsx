@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { CatalogCard } from '../../components/CatalogCard/CatalogCard';
 import styles from './CatalogMini.module.css';
 
-import { Button } from '../../components/Button/Button';
+import { Button, ButtonSize } from '../../components/Button/Button';
 import { TshirtColor } from '../../../constants/ItemColor';
 import { ItemType } from '../../../types/itemTypes';
-import { Design } from '../../../types/designTypes';
+import { Design, designKey } from '../../../types/designTypes';
 import { PredictionStatus } from '../../../types/predictionTypes';
 
 const MainPageDesigns: Design[] = [
@@ -82,12 +82,12 @@ export const CatalogMini = () => {
         <div className={styles.catalog}>
             <div className={styles.cards}>
                 {MainPageDesigns.map((design) => (
-                    <CatalogCard design={design} key={design.prediction.id} />
+                    <CatalogCard design={design} key={designKey(design)} />
                 ))}
             </div>
 
             <Link href="/catalog">
-                <Button>В каталог</Button>
+                <Button size={ButtonSize.Large}>В каталог</Button>
             </Link>
         </div>
     );

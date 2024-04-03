@@ -56,7 +56,7 @@ export default dynamic(
                             <MedicineBoxOutlined
                                 className={styles.cartEmptyIcon}
                             />
-                            <div>Корзина пуста</div>
+                            <div>Пусто</div>
                         </div>
                     )}
 
@@ -78,7 +78,10 @@ export default dynamic(
                     </div>
 
                     <div className={styles.orderBlock}>
-                        <Button size={ButtonSize.Large}>
+                        <Button
+                            size={ButtonSize.Large}
+                            disabled={cart.length === 0}
+                        >
                             Перейти к оформлению
                         </Button>
                     </div>

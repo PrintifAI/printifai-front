@@ -102,7 +102,7 @@ export default function Prediction({
     const pathname = usePathname();
 
     useEffect(() => {
-        if (!prediction?.id) {
+        if (!prediction?.id || prediction.status !== PredictionStatus.Ready) {
             return;
         }
 

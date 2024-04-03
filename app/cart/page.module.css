@@ -23,7 +23,7 @@
 .wrapper {
     width: 100%;
     font-family: var(--font-montserrat);
-
+    margin-bottom: 100px;
 }
 
 .orderBlock {

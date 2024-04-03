@@ -55,28 +55,28 @@ export const BackgroundFigures = ({ align = 'center' }: Props) => {
     return (
         <motion.div style={{ y }} className={styles.figuresContainer}>
             <div className={clsx(styles.figure, styles.fig1)}>
-                <Image src={fig1} alt="" />
+                <Image src={fig1} alt="" draggable="false" />
             </div>
             <div className={clsx(styles.figure, styles.fig2)}>
-                <Image src={fig2} alt="" />
+                <Image src={fig2} alt="" draggable="false" />
             </div>
             <div className={clsx(styles.figure, styles.fig3)}>
-                <Image src={fig3} alt="" />
+                <Image src={fig3} alt="" draggable="false" />
             </div>
             <div className={clsx(styles.figure, styles.fig4)}>
-                <Image src={fig4} alt="" />
+                <Image src={fig4} alt="" draggable="false" />
             </div>
             <div className={clsx(styles.figure, styles.fig5)}>
-                <Image src={fig5} alt="" />
+                <Image src={fig5} alt="" draggable="false" />
             </div>
             <div className={clsx(styles.figure, styles.fig6)}>
-                <Image src={fig6} alt="" />
+                <Image src={fig6} alt="" draggable="false" />
             </div>
             <div className={clsx(styles.figure, styles.fig7)}>
-                <Image src={fig7} alt="" />
+                <Image src={fig7} alt="" draggable="false" />
             </div>
             <div className={clsx(styles.figure, styles.fig8)}>
-                <Image src={fig8} alt="" />
+                <Image src={fig8} alt="" draggable="false" />
             </div>
         </motion.div>
     );

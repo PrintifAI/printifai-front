@@ -20,7 +20,6 @@ import { CartContext } from '../../../../../providers/CartProvider';
 
 import styles from './ItemSizePick.module.css';
 import Link from 'next/link';
-import nanoEqual from 'nano-equal';
 import { Design, equalDesign } from '../../../../../types/designTypes';
 
 const options = [
@@ -50,44 +49,44 @@ const AccordionsMapping = {
                         <tr>
                             <td>XXS</td>
                             <td>80-84 см</td>
-                            <td>80-84 см</td>
+                            <td>60-64 см</td>
                             <td>60 см</td>
                         </tr>
                         <tr>
                             <td>XS</td>
-                            <td>80-84 см</td>
-                            <td>80-84 см</td>
-                            <td>60 см</td>
+                            <td>84-88 см</td>
+                            <td>64-68 см</td>
+                            <td>62 см</td>
                         </tr>
                         <tr>
                             <td>S</td>
-                            <td>80-84 см</td>
-                            <td>80-84 см</td>
-                            <td>60 см</td>
+                            <td>88-92 см</td>
+                            <td>68-72 см</td>
+                            <td>64 см</td>
                         </tr>
                         <tr>
                             <td>M</td>
-                            <td>80-84 см</td>
-                            <td>80-84 см</td>
-                            <td>60 см</td>
+                            <td>92-96 см</td>
+                            <td>72-76 см</td>
+                            <td>66 см</td>
                         </tr>
                         <tr>
                             <td>L</td>
-                            <td>80-84 см</td>
-                            <td>80-84 см</td>
-                            <td>60 см</td>
+                            <td>96-100 см</td>
+                            <td>76-80 см</td>
+                            <td>68 см</td>
                         </tr>
                         <tr>
                             <td>XL</td>
+                            <td>100-104 см</td>
                             <td>80-84 см</td>
-                            <td>80-84 см</td>
-                            <td>60 см</td>
+                            <td>70 см</td>
                         </tr>
                         <tr>
                             <td>XXL</td>
-                            <td>80-84 см</td>
-                            <td>80-84 см</td>
-                            <td>60 см</td>
+                            <td>104-108 см</td>
+                            <td>84-88 см</td>
+                            <td>72 см</td>
                         </tr>
                     </tbody>
                 </table>
