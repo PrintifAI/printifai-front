@@ -5,6 +5,7 @@
 }
 
 .cardLink {
+    min-width: 244px;
     width: 244px;
     height: 260px;
 }

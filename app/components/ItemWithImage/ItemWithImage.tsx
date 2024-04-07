@@ -53,6 +53,7 @@ export const ItemWithImage = ({ imageSrc, itemSrc, loading }: Props) => {
                     className={styles.itemImage}
                     priority={true}
                     draggable="false"
+                    width={itemSrc.width}
                 />
             </motion.div>
         </AnimatePresence>

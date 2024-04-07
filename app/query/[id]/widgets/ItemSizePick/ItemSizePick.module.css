@@ -1,5 +1,5 @@
 .wrapper {
-    width: 1008px;
+    width: auto;
     padding-bottom: 30px;
 }
 
@@ -11,6 +11,8 @@
 .gridWrapper {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 48px;
 }
 
@@ -33,6 +35,8 @@
 .addToCardBlock {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
     gap: 20px;
     margin-top: 32px;
 }

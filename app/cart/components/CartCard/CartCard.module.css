@@ -10,6 +10,7 @@
 .itemImage {
     width: 100px;
     height: 100px;
+    min-width: 100px;
 }
 
 .imageBlock {
@@ -17,6 +18,8 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    max-width: 400px;
+    width: 100%;
 }
 
 .price {
@@ -35,12 +38,12 @@
 .prompt {
     font-size: 20px;
     font-weight: 500;
+    width: 100%;
 }
 
 .descriptionBlock {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 319px;
     width: 100%;
 }

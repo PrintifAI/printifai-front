@@ -1,7 +1,6 @@
 .wrapper {
     font-family: var(--font-montserrat);
-    max-width: 850px;
-    width: 100%;
+    max-width: 800px;
     display: flex;
     align-items: center;
     flex-direction: column;
