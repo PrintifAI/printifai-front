@@ -10,6 +10,7 @@ import styles from './layout.module.css';
 import { montserrat, ramabhadra, robotoFlex } from './fonts';
 import clsx from 'clsx';
 import { Providers } from './components/Providers';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: 'PrintifAI',
@@ -33,10 +34,12 @@ export default function RootLayout({
             >
                 <Providers>
                     <Header />
-                    <div className={styles.wrapper}>
-                        <div className={styles.content}>{children}</div>
-                    </div>
-                    <Footer />
+                    <Suspense>
+                        <div className={styles.wrapper}>
+                            <div className={styles.content}>{children}</div>
+                        </div>
+                        <Footer />
+                    </Suspense>
                 </Providers>
             </body>
         </html>

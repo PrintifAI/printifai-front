@@ -6,23 +6,18 @@ import { Order, OrderResponse } from '../../types/orderTypes';
 import styles from './page.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { CartCard } from '../cart/components/CartCard/CartCard';
+import { useSearchParams } from 'next/navigation';
 
-type SearchParams = {
-    token?: string;
-};
+export default function AdminPage() {
+    const params = useSearchParams();
 
-export default function AdminPage({
-    searchParams,
-}: {
-    searchParams: SearchParams;
-}) {
     const { data: orders } = useQuery({
         queryKey: ['orders'],
         queryFn: () =>
             axios
                 .get<OrderResponse[]>(`${Config.BACK_HOST}/order`, {
                     headers: {
-                        Authorization: `Bearer ${searchParams.token}`,
+                        Authorization: `Bearer ${params.get('token')}`,
                     },
                 })
                 .then((res) => res.data),
