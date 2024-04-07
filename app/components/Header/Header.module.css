@@ -2,7 +2,7 @@
     height: 100%;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     max-width: 1104px;
     margin-left: auto;
@@ -24,7 +24,6 @@
     font-weight: 400;
     gap: 5px;
     height: 100%;
-    box-sizing: padding-box;
     padding: 0 20px;
 }
 
@@ -32,9 +31,9 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    max-width: 740px;
     flex-direction: row;
     width: 100%;
-    padding: 0 82px;
     font-size: 20px;
     font-weight: 300;
     font-family: var(--font-roboto-flex);

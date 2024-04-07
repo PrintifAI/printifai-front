@@ -1,4 +1,4 @@
-.accordeon {
+.accordion {
     width: 100%;
     overflow: hidden;
     font-family: var(--font-montserrat);
@@ -16,4 +16,8 @@
     font-family: var(--font-montserrat);
     font-size: 16px;
     font-weight: 500;
+}
+
+.accordionTitle {
+    margin-right: 20px;
 }

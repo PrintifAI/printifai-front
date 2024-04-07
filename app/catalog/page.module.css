@@ -1,6 +1,7 @@
 .wrapper {
     font-family: var(--font-montserrat);
-    width: 850px;
+    max-width: 850px;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -15,11 +16,11 @@
 }
 
 .catalogMain {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 .catalogMain:nth-child(4) {

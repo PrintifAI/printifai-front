@@ -32,13 +32,11 @@ export default dynamic(
                     .post(`${Config.BACK_HOST}/order`, {
                         data: JSON.stringify(order),
                     })
-                    .then((res) => {
+                    .then(() => {
                         router.push('/success');
                         setCart([]);
                     })
-                    .catch((res) => {
-                        console.log(res);
-                    });
+                    .catch();
             };
 
             const sum = cart.reduce((prev, cur) => {

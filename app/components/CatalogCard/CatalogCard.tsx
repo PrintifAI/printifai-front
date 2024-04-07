@@ -38,7 +38,7 @@ export const CatalogCard = ({ design }: Props) => {
                 <ItemCard
                     type={design.type}
                     color={color}
-                    removedBackground={false}
+                    removedBackground={design.removedBackground}
                     predictionId={design.prediction.id}
                 />
             </Link>

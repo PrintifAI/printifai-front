@@ -1,9 +1,10 @@
 .cards {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 30px;
+    flex-wrap: wrap;
 }
 
 .itemCard {
@@ -26,4 +27,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }

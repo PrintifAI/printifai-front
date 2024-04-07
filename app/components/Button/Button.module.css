@@ -28,6 +28,7 @@
     font-weight: 500;
     font-size: 18px;
     user-select: none;
+    text-wrap: nowrap;
 }
 
 .button:disabled {

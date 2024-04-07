@@ -14,9 +14,9 @@ export const Accordion = ({ children, title }: Props) => {
     const [opened, setOpened] = useState(false);
 
     return (
-        <div className={styles.accordeon}>
+        <div className={styles.accordion}>
             <div className={styles.flex} onClick={() => setOpened(!opened)}>
-                <div>{title}</div>
+                <div className={styles.accordionTitle}>{title}</div>
                 <div>{opened ? <MinusOutlined /> : <PlusOutlined />}</div>
             </div>
             <div
