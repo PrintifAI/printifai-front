@@ -53,22 +53,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/icons@npm:^5.3.5":
-  version: 5.3.5
-  resolution: "@ant-design/icons@npm:5.3.5"
-  dependencies:
-    "@ant-design/colors": "npm:^7.0.0"
-    "@ant-design/icons-svg": "npm:^4.4.0"
-    "@babel/runtime": "npm:^7.11.2"
-    classnames: "npm:^2.2.6"
-    rc-util: "npm:^5.31.1"
-  peerDependencies:
-    react: ">=16.0.0"
-    react-dom: ">=16.0.0"
-  checksum: 10c0/ca0712b2dd9486c72fc5e6bc7bf6cd096fbd20b40b92d06576f4d6532d839b7b4a295ba180913a95f9154e01cbf1a63b8a0207189a191578e250334cfb3267c2
-  languageName: node
-  linkType: hard
-
 "@ant-design/icons@npm:^5.3.6":
   version: 5.3.6
   resolution: "@ant-design/icons@npm:5.3.6"
@@ -85,7 +69,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/react-slick@npm:~1.1.1":
+"@ant-design/react-slick@npm:~1.1.2":
   version: 1.1.2
   resolution: "@ant-design/react-slick@npm:1.1.2"
   dependencies:
@@ -100,7 +84,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.20.0, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.5, @babel/runtime@npm:^7.23.6, @babel/runtime@npm:^7.23.9, @babel/runtime@npm:^7.24.1":
+"@babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.20.0, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.5, @babel/runtime@npm:^7.23.6, @babel/runtime@npm:^7.23.9":
   version: 7.24.1
   resolution: "@babel/runtime@npm:7.24.1"
   dependencies:
@@ -115,6 +99,15 @@ __metadata:
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
   checksum: 10c0/3495eed727bf4a4f84c35bb51ab53317ae38f4bbc3b1d0a8303751f9dfa0ce6f5fb2afced72b76c3dd0d8bb2ccb84787559a4dee9886291a36b26f02f0f759b4
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.24.4":
+  version: 7.24.4
+  resolution: "@babel/runtime@npm:7.24.4"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10c0/785aff96a3aa8ff97f90958e1e8a7b1d47f793b204b47c6455eaadc3f694f48c97cd5c0a921fe3596d818e71f18106610a164fb0f1c71fd68c622a58269d537c
   languageName: node
   linkType: hard
 
@@ -741,21 +734,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.28.13":
-  version: 5.28.13
-  resolution: "@tanstack/query-core@npm:5.28.13"
-  checksum: 10c0/4eb2c162a05948caf556d84ee65a7d640786adcfdc3fbefaf3e010ab462bdfb3ea7bdb200829ca33ccc60699a9a6d9414e7d6a3ea92b819a5de25337ea07b0d7
+"@tanstack/query-core@npm:5.29.0":
+  version: 5.29.0
+  resolution: "@tanstack/query-core@npm:5.29.0"
+  checksum: 10c0/ec90801c7234a551e347656b02c6e4dcc448722c466cc42eaf03bb69ac535c2e26a74f7189c21cf836cacf41851f30d17beae0f9478017b6220b612e1803eddb
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.28.14":
-  version: 5.28.14
-  resolution: "@tanstack/react-query@npm:5.28.14"
+"@tanstack/react-query@npm:^5.29.0":
+  version: 5.29.0
+  resolution: "@tanstack/react-query@npm:5.29.0"
   dependencies:
-    "@tanstack/query-core": "npm:5.28.13"
+    "@tanstack/query-core": "npm:5.29.0"
   peerDependencies:
     react: ^18.0.0
-  checksum: 10c0/34d269be1653d1ac313603c145540e15c5bd94da012b0fafda2f2d90bbc0712a213e41d4335d5b2f2fd54ac2f238dd0582aeb617b71edba5046235ec6bc69939
+  checksum: 10c0/0c9041912330b4da6dc3b3f6d54e5f11edbb47ebbf8736db708e71e799b68bae9dfcdcaba6af431f3c9c79830225b289d2b6c0dd2304ac38f52a9e6f25c452bd
   languageName: node
   linkType: hard
 
@@ -966,15 +959,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^5.16.0":
-  version: 5.16.0
-  resolution: "antd@npm:5.16.0"
+"antd@npm:^5.16.1":
+  version: 5.16.1
+  resolution: "antd@npm:5.16.1"
   dependencies:
     "@ant-design/colors": "npm:^7.0.2"
     "@ant-design/cssinjs": "npm:^1.18.5"
-    "@ant-design/icons": "npm:^5.3.5"
-    "@ant-design/react-slick": "npm:~1.1.1"
-    "@babel/runtime": "npm:^7.24.1"
+    "@ant-design/icons": "npm:^5.3.6"
+    "@ant-design/react-slick": "npm:~1.1.2"
+    "@babel/runtime": "npm:^7.24.4"
     "@ctrl/tinycolor": "npm:^3.6.1"
     "@rc-component/color-picker": "npm:~1.5.3"
     "@rc-component/mutate-observer": "npm:^1.1.0"
@@ -1008,7 +1001,7 @@ __metadata:
     rc-slider: "npm:~10.5.0"
     rc-steps: "npm:~6.0.1"
     rc-switch: "npm:~4.1.0"
-    rc-table: "npm:~7.45.0"
+    rc-table: "npm:~7.45.4"
     rc-tabs: "npm:~14.1.1"
     rc-textarea: "npm:~1.6.3"
     rc-tooltip: "npm:~6.2.0"
@@ -1021,7 +1014,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 10c0/acb26cd1f01a91961ee5b01b6b8a96f416e7d2819033015d52fb35d4453b0fed615344e4b4a10bc32be4d875fd17d490137ab57347d20df77890a0a7af10f5d6
+  checksum: 10c0/e2678fb2bf7f22a7350785825370a91a367b767f8aeff3642dbc54eae1d51dfbe3ed89956fb60a1819a6ad01c067b76024063992b0708f25439cece9c0042c28
   languageName: node
   linkType: hard
 
@@ -2325,9 +2318,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^11.0.24":
-  version: 11.0.24
-  resolution: "framer-motion@npm:11.0.24"
+"framer-motion@npm:^11.0.25":
+  version: 11.0.25
+  resolution: "framer-motion@npm:11.0.25"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -2341,7 +2334,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/8d884a828ef3e03683fdd5bbe5de64751f2a97f379f332262142caf2ae76d5af5fb1e2810a1a5845fb3322c8990f568997d22ffe8f0ff0f2eb7e637c5e0a5266
+  checksum: 10c0/494ee0aa30f8d58f76ad19e720f07895c05790d3db5514e9d8937684af82590f2db756ea3f7c3a5e87223b85f3777d9401481c8254c157a3c207ee3da7579c3d
   languageName: node
   linkType: hard
 
@@ -3892,11 +3885,11 @@ __metadata:
   resolution: "printifai-front@workspace:."
   dependencies:
     "@ant-design/icons": "npm:^5.3.6"
-    "@tanstack/react-query": "npm:^5.28.14"
+    "@tanstack/react-query": "npm:^5.29.0"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
-    antd: "npm:^5.16.0"
+    antd: "npm:^5.16.1"
     autoprefixer: "npm:^10.4.19"
     axios: "npm:^1.6.8"
     clsx: "npm:^2.1.0"
@@ -3904,7 +3897,7 @@ __metadata:
     eslint-config-next: "npm:^14.1.4"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
-    framer-motion: "npm:^11.0.24"
+    framer-motion: "npm:^11.0.25"
     joi: "npm:^17.12.3"
     next: "npm:^14.1.4"
     postcss: "npm:^8.4.38"
@@ -4370,7 +4363,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-table@npm:~7.45.0":
+"rc-table@npm:~7.45.4":
   version: 7.45.4
   resolution: "rc-table@npm:7.45.4"
   dependencies:

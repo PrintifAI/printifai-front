@@ -3,18 +3,42 @@
 import { FormEventHandler, useContext } from 'react';
 import styles from './page.module.css';
 import { Input } from '../components/Input/Input';
-import { Button } from '../components/Button/Button';
+import { Button, ButtonSize } from '../components/Button/Button';
 import { CartContext } from '../../providers/CartProvider';
 import { Price } from '../../constants/prices';
 import dynamic from 'next/dynamic';
+import { Config } from '../../config/config';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default dynamic(
     () =>
         Promise.resolve(() => {
-            const { cart } = useContext(CartContext);
+            const router = useRouter();
+            const { cart, setCart } = useContext(CartContext);
 
             const handleSubmit: FormEventHandler = (e) => {
                 e.preventDefault();
+                const data = new FormData(e.target as any);
+                const orderData = Object.fromEntries(data.entries());
+
+                const order = {
+                    ...orderData,
+                    cart,
+                };
+
+                axios
+                    .post(`${Config.BACK_HOST}/order`, {
+                        data: JSON.stringify(order),
+                    })
+                    .then((res) => {
+                        router.push('/success');
+                        setCart([]);
+                    })
+                    .catch((res) => {
+                        console.log(res);
+                    });
             };
 
             const sum = cart.reduce((prev, cur) => {
@@ -27,46 +51,77 @@ export default dynamic(
 
                     <form onSubmit={handleSubmit} className={styles.form}>
                         <div className={styles.formRow}>
-                            <Input placeholder="Город" />
-                            <Input placeholder="Полный адрес" />
+                            <Input name="city" placeholder="Город" required />
+                            <Input
+                                name="address"
+                                placeholder="Полный адрес"
+                                required
+                            />
                         </div>
                         <div className={styles.formRow}>
-                            <Input placeholder="Имя" />
-                            <Input placeholder="Фамилия" />
+                            <Input name="name" placeholder="Имя" required />
+                            <Input
+                                name="surname"
+                                placeholder="Фамилия"
+                                required
+                            />
                         </div>
                         <div className={styles.formRow}>
-                            <Input placeholder="Email" />
-                            <Input placeholder="Номер телефона" />
+                            <Input name="email" placeholder="Email" required />
+                            <Input
+                                name="telegram"
+                                placeholder="Телеграм"
+                                required
+                            />
                         </div>
                         <div className={styles.formRow}>
-                            <Input placeholder="Комментарий к заказу" />
+                            <Input
+                                name="comment"
+                                placeholder="Комментарий к заказу"
+                            />
                         </div>
 
                         <div className={styles.deliveryWay}>
-                            <div>Способ доставки</div>
+                            <div className={styles.deliveryWayHeader}>
+                                Способ доставки
+                            </div>
                             <label className={styles.deliveryWayRadio}>
-                                <input
-                                    type="radio"
-                                    name="languages"
-                                    value="post"
-                                />
-                                <div>Почтой России</div>
+                                <div className={styles.radioLeft}>
+                                    <input
+                                        type="radio"
+                                        name="deliveryWay"
+                                        value="post"
+                                        className={styles.radio}
+                                        defaultChecked
+                                    />
+                                    <div>Почтой России</div>
+                                </div>
                                 <div className={styles.wayPrice}>299 ₽</div>
                             </label>
                             <label className={styles.deliveryWayRadio}>
-                                <input
-                                    type="radio"
-                                    name="languages"
-                                    value="cdek"
-                                />
-                                <div>СДЭК</div>
+                                <div className={styles.radioLeft}>
+                                    <input
+                                        type="radio"
+                                        name="deliveryWay"
+                                        value="cdek"
+                                        className={styles.radio}
+                                    />
+                                    <div>СДЭК</div>
+                                </div>
                                 <div className={styles.wayPrice}>299 ₽</div>
                             </label>
                         </div>
 
                         <div className={styles.sum}>Итого: {sum} ₽</div>
                         <div className={styles.finalButton}>
-                            <Button type="submit">Оформить заказ</Button>
+                            <Link className={styles.offer} href="docs">
+                                Нажимая на кнопку оформить заказ,
+                                <br /> вы соглашаетесь с политикой обработки
+                                персональных данных
+                            </Link>
+                            <Button type="submit" size={ButtonSize.Large}>
+                                Оформить заказ
+                            </Button>
                         </div>
                     </form>
                 </div>

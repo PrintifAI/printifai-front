@@ -14,7 +14,7 @@ import Link from 'next/link';
 
 type Props = {
     item: CartItem;
-    onChange: (item: CartItem, newItem: CartItem | null) => void;
+    onChange?: (item: CartItem, newItem: CartItem | null) => void;
 };
 
 const capitalizeFirstLetter = (string: string) => {
@@ -23,14 +23,14 @@ const capitalizeFirstLetter = (string: string) => {
 
 export const CartCard = ({ item, onChange }: Props) => {
     const handleChangeCount = (count: number) => {
-        onChange(item, {
+        onChange?.(item, {
             ...item,
             count: count,
         });
     };
 
     const handleRemoveItem = () => {
-        onChange(item, null);
+        onChange?.(item, null);
     };
 
     const link = getCardLink({
@@ -68,15 +68,25 @@ export const CartCard = ({ item, onChange }: Props) => {
                     </div>
                 </div>
             </Link>
-            <div>
-                <InputNumber value={item.count} onChange={handleChangeCount} />
-            </div>
+            {onChange ? (
+                <div>
+                    <InputNumber
+                        value={item.count}
+                        onChange={handleChangeCount}
+                    />
+                </div>
+            ) : (
+                <div>{item.count}</div>
+            )}
+
             <div className={styles.price}>
                 {numberWithSpaces(Price[item.design.type])} ₽
             </div>
-            <button onClick={handleRemoveItem}>
-                <CloseOutlined />
-            </button>
+            {onChange && (
+                <button onClick={handleRemoveItem}>
+                    <CloseOutlined />
+                </button>
+            )}
         </div>
     );
 };

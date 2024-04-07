@@ -28,3 +28,7 @@
 .icon:hover  {
     color: var(--pink);
 }
+
+.link {
+    font-size: 15px;
+}

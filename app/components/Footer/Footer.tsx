@@ -1,6 +1,7 @@
 import { YoutubeOutlined, InstagramOutlined } from '@ant-design/icons';
 import styles from './Footer.module.css';
 import { TelegramIcon } from '../Icons/Telegram';
+import Link from 'next/link';
 
 export const Footer = () => {
     return (
@@ -11,9 +12,9 @@ export const Footer = () => {
                     {/* <a href="https://youtube.com" className={styles.icon}>
                         <YoutubeOutlined />
                     </a> */}
-                    {/* <a href="https://instagram.com" className={styles.icon}>
-                        <InstagramOutlined />
-                    </a> */}
+                    <Link href="/docs" className={styles.link}>
+                        Документы
+                    </Link>
                     <a href="https://t.me/printifai" className={styles.icon}>
                         <TelegramIcon />
                     </a>

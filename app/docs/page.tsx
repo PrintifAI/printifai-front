@@ -1,0 +1,19 @@
+import { DownloadOutlined } from '@ant-design/icons';
+import styles from './page.module.css';
+
+export default function Docs() {
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.head}>Документы</div>
+            <div className={styles.links}>
+                <a
+                    href="/docs/user_agreement.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Пользовательское соглашение <DownloadOutlined />
+                </a>
+            </div>
+        </div>
+    );
+}
