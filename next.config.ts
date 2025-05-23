@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
                 port: '3005',
                 pathname: '/api/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'printifai.ru',
+                pathname: '/**',
+            },
         ],
     },
 };
