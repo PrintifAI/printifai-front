@@ -114,8 +114,8 @@ export default dynamic(
                         <div className={styles.finalButton}>
                             <Link className={styles.offer} href="docs">
                                 Нажимая на кнопку оформить заказ,
-                                <br /> вы соглашаетесь с политикой обработки
-                                персональных данных
+                                 вы соглашаетесь с политикой обработки
+                                персональных данных и пользовательским соглашением
                             </Link>
                             <Button type="submit" size={ButtonSize.Large}>
                                 Оформить заказ

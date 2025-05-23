@@ -7,3 +7,7 @@ img {
 *:focus {
     outline: none;
 }
+
+button {
+    cursor: pointer;
+}
