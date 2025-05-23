@@ -14,6 +14,7 @@ export default function Contacts() {
                 <a href="mailto:printifai@yandex.ru">printifai@yandex.ru</a>
             </div>
             <div className={styles.contactsText}>ИНН: 772605831826</div>
+            <div className={styles.contactsText}>Печёнкин Иван Андреевич</div>
         </>
     );
 }
