@@ -16,7 +16,7 @@ import { ItemPicker } from './widgets/ItemPicker/ItemPicker';
 import { useQuery } from '@tanstack/react-query';
 import { Config } from '../../../config/config';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { ItemColor, TshirtColor } from '../../../constants/ItemColor';
 import { ItemType } from '../../../types/itemTypes';
 import { ItemSizePick } from './widgets/ItemSizePick/ItemSizePick';
@@ -45,14 +45,17 @@ export default function Prediction({
     params,
     searchParams,
 }: {
-    params: Params;
-    searchParams: SearchParams;
+    params: Promise<Params>;
+    searchParams: Promise<SearchParams>;
 }) {
-    const id = params.id;
-    const typeParam = searchParams.type;
-    const colorParam = searchParams.color;
-    const secondPageParam = searchParams.secondPage;
-    const removedBackgroundParam = !!searchParams.rmbg;
+    const unwrappedParams = use(params);
+    const unwrappedSearchParams = use(searchParams);
+
+    const id = unwrappedParams.id;
+    const typeParam = unwrappedSearchParams.type;
+    const colorParam = unwrappedSearchParams.color;
+    const secondPageParam = unwrappedSearchParams.secondPage;
+    const removedBackgroundParam = !!unwrappedSearchParams.rmbg;
 
     const [secondPage, setSecondPage] = useState(secondPageParam || false);
     const [color, setColor] = useState(colorParam || TshirtColor.White);

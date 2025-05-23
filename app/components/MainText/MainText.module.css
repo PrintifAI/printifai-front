@@ -15,7 +15,7 @@
 
 .rotatedWord {
     transform: rotate(-1.5deg);
-    background-color: #FF83C6;
+    background-color: #ff83c6;
     border-radius: 30px;
     padding: 10px 20px;
     display: inline-flex;
@@ -29,12 +29,12 @@
 
 .underline1:after {
     display: block;
-    background: url("/figures/underline1.svg") no-repeat;
+    background: url('/figures/underline1.svg') no-repeat;
     width: 5em;
     height: 1em;
     position: absolute;
     top: 1.3em;
-    content: "";
+    content: '';
 }
 
 .underline2 {
@@ -44,11 +44,11 @@
 
 .underline2:after {
     display: block;
-    background: url("/figures/underline2.svg") no-repeat;
+    background: url('/figures/underline2.svg') no-repeat;
     width: 7.5em;
     height: 1em;
     position: absolute;
     top: 1.3em;
-    content: "";
+    content: '';
     left: -0.2em;
 }

@@ -1,4 +1,4 @@
-.itemWithImage{
+.itemWithImage {
     width: 100%;
     height: 100%;
     display: flex;
@@ -7,7 +7,9 @@
     padding: 20px;
     border-radius: 8px;
     position: relative;
-    background: 10px 35% url("/figures/fig9.svg") no-repeat,
-    calc(100% - 10px) 6% url("/figures/fig10.svg") no-repeat, var(--txt-black);
+    background:
+        10px 35% url('/figures/fig9.svg') no-repeat,
+        calc(100% - 10px) 6% url('/figures/fig10.svg') no-repeat,
+        var(--txt-black);
     user-select: none;
 }

@@ -11,7 +11,7 @@
 .headText {
     margin-top: 48px;
     margin-bottom: 28px;
-    color: var(--txt-black, rgba(0, 0, 0, 0.90));
+    color: var(--txt-black, rgba(0, 0, 0, 0.9));
     font-size: 32px;
     font-style: normal;
     font-weight: 600;

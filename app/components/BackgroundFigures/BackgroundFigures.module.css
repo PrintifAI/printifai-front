@@ -22,17 +22,17 @@
 
 .fig3 {
     left: 7%;
-    top: 30% ;
+    top: 30%;
 }
 
 .fig4 {
-    left:  calc(95% - 50px);
+    left: calc(95% - 50px);
     top: 30%;
 }
 
 .fig5 {
     left: 10%;
-    top: 50% ;
+    top: 50%;
 }
 
 .fig6 {
@@ -49,4 +49,3 @@
     left: calc(90% - 50px);
     top: 70%;
 }
-

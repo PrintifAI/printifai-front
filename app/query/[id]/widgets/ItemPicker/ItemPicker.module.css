@@ -1,4 +1,4 @@
-.itemWithImage{
+.itemWithImage {
     width: 503px;
     height: 518px;
 }
@@ -25,7 +25,7 @@
 }
 
 .itemTypePicked {
-    border: 1px solid var(--pink, #FF83C6);
+    border: 1px solid var(--pink, #ff83c6);
 }
 
 .buttons {

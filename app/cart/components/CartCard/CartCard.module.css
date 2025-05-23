@@ -32,7 +32,7 @@
     gap: 6px;
     display: flex;
     flex-direction: column;
-    color: #666565
+    color: #666565;
 }
 
 .prompt {

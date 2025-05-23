@@ -1,8 +1,8 @@
 :root {
-    --bg-color: rgba(255,255,255);
-    --bg-color-hover: rgba(255,255,255,0.8);
+    --bg-color: rgba(255, 255, 255);
+    --bg-color-hover: rgba(255, 255, 255, 0.8);
 
-    --txt-black: rgba(0, 0, 0, 0.90);
-    --pink: #FF83C6;
-    --grey-white: #EEE;
+    --txt-black: rgba(0, 0, 0, 0.9);
+    --pink: #ff83c6;
+    --grey-white: #eee;
 }
