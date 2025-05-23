@@ -20,7 +20,7 @@ export default dynamic(
 
             const handleSubmit: FormEventHandler = (e) => {
                 e.preventDefault();
-                const data = new FormData(e.target as any);
+                const data = new FormData(e.target as HTMLFormElement);
                 const orderData = Object.fromEntries(data.entries());
 
                 const order = {

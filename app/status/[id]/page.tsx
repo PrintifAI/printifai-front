@@ -1,13 +1,14 @@
 'use client';
 
 import styles from './page.module.css';
+import { use } from 'react';
 
 type Params = {
     id: string;
 };
 
-export default function StatusPage({ params }: { params: Params }) {
-    const id = params.id;
+export default function StatusPage({ params }: { params: Promise<Params> }) {
+    const { id } = use(params);
 
     return (
         <div className={styles.wrapper}>

@@ -189,7 +189,8 @@ export const ItemSizePick = ({
                             type={type}
                             color={color}
                             removedBackground={removedBackground}
-                            predictionId={prediction?.id!}
+                            // TODO: fix this
+                            predictionId={prediction?.id || ''}
                             loading={!prediction}
                         />
                     </div>

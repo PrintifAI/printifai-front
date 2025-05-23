@@ -23,7 +23,7 @@ export default dynamic(
             }, 0);
 
             const handleChange = (item: CartItem, newItem: CartItem | null) => {
-                let newCart = [...cart];
+                const newCart = [...cart];
 
                 const i = newCart.findIndex((cartItem) =>
                     equalCartItems(item, cartItem),

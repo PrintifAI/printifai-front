@@ -22,11 +22,7 @@ function useParallax(value: MotionValue<number>, distance: number) {
     return useTransform(value, [0, 1], [0, distance]);
 }
 
-type Props = {
-    align?: 'center' | 'right';
-};
-
-export const BackgroundFigures = ({ align = 'center' }: Props) => {
+export const BackgroundFigures = () => {
     const { scrollYProgress } = useScroll();
     const pathname = usePathname();
 

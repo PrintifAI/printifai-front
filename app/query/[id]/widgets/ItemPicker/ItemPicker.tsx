@@ -77,7 +77,8 @@ export const ItemPicker = ({
             .then(() => {
                 setRemovedBackground(true);
             })
-            .catch((_: AxiosError) => {})
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                .catch((_: AxiosError) => {})
             .finally(() => {
                 setRemoveLoading(false);
             });
