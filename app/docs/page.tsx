@@ -13,6 +13,13 @@ export default function Docs() {
                 >
                     Пользовательское соглашение <DownloadOutlined />
                 </a>
+                <a
+                    href="/docs/personal_data_processing_policy.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Политика обработки персональных данных <DownloadOutlined />
+                </a>
             </div>
         </div>
     );

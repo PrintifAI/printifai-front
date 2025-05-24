@@ -12,7 +12,13 @@ type Props = {
 export const InputNumber = ({ value, onChange, min = 1, max = 99 }: Props) => {
     const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
         const num = +e.target.value.replace(/\D/g, '');
-        return onChange(num > 0 ? num : 0);
+        if (num > max) {
+            return onChange(max);
+        }
+        if (num < min) {
+            return onChange(min);
+        }
+        return onChange(num);
     };
     return (
         <div className={styles.block}>

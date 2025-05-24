@@ -199,7 +199,7 @@ export const ItemSizePick = ({
                     </div>
                 </div>
 
-                <div>
+                <div className={styles.rightBlock}>
                     <div className={styles.headText}>
                         {prediction?.sourcePrompt}
                     </div>

@@ -36,8 +36,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
+    justify-content: space-between;
     margin-top: 32px;
 }
 
@@ -53,4 +52,8 @@
 
 .accordionTable th {
     font-weight: 500;
+}
+
+.rightBlock {
+    min-width: 370px;
 }
